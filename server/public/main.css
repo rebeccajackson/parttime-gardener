@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  }
+
+  /* Layout */
+
+body{
+  font-family: 'Montserrat', sans-serif;
+}
+
+#view-page{
+  display: grid;
+  grid-template: '. view-top view-top view-top .' 30vh
+    '. my-garden . view-month .' auto
+  /5% 30% 5% 55% 5%;
+  color: rgb(32, 32, 32);
+  grid-gap: 10px;
+  margin: 2em;
+  justify-content: center;
+}
+
+.view-top{
+  grid-area: view-top;
+}
+
+
+.my-garden{
+  grid-area: my-garden;
+  justify-self: center;
+  width: 100%;
+  display: grid;
+  grid-template: 'h3' 70px
+    'garden-list' 300px
+    /100%;
+    -webkit-box-shadow: 13px 14px 65px -24px rgba(156,150,156,0.81);
+    -moz-box-shadow: 13px 14px 65px -24px rgba(156,150,156,0.81);
+    box-shadow: 13px 14px 65px -24px rgba(156,150,156,0.81);
+
+}
+
+.view-month{
+  justify-self: center;
+  grid-area: view-month;
+  width: 100%;
+  display: grid;
+  grid-template: 'month-name month-name month-name' 70px
+    'box1 box2 box3' 300px
+    /2fr 2fr 2fr;
+
+    box-shadow: 13px 14px 65px -24px rgba(156,150,156,0.81);
+}
+
+.month-name{
+  grid-area: month-name;
+}
+
+.box1{
+  grid-area: box1;
+  border-bottom-left-radius: 5px;
+}
+
+.box2{
+  grid-area: box2;
+}
+
+.box3{
+  grid-area: box3;
+  border-bottom-right-radius: 5px;
+}
+
+.month-box{
+  background-color: rgba(119, 250, 163, 0.623);
+  border: 1px solid rgb(99, 99, 99);
+  padding: 1em;
+}
+
+
+/* Typography */
+.box-title{
+  text-align: center;
+  height: 100%;
+  line-height: 70px;
+  background-color:  rgba(189, 189, 189, 0.288);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.month-letter{
+  font-size: 2em;
+
+}
+th a{
+  list-style-type: none; 
+  color: black;
+}
+
+.month-letter, td{
+  border: 1px solid black;
+  text-align: center;
+}
+
+
+.garden-list{
+  background-color: rgba(250, 156, 119, 0.623);
+  border: 1px solid rgb(99, 99, 99);
+  display: flex;
+  flex-direction: column;
+  align-items: space-evenly;
+  justify-content: center;
+  padding: 1em;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.veg-body{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+.veg-title h1{
+  display: flex;
+  align-items: space-evenly;
+  justify-content: center;
+}
+/* Colors */
+
+.summer{
+  background-color: rgba(175, 59, 59, 0.788)
+}
+
+.autumn{
+  background-color: rgba(202, 115, 74, 0.788)
+}
+
+.winter{
+  background-color: rgba(74, 183, 202, 0.788)
+}
+
+.spring{
+  background-color: rgba(74, 183, 202, 0.788)
+}
