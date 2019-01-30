@@ -4,14 +4,13 @@ const MyGarden = () => {
   
   return(
 
-    <div class="my-garden">
-      <h3 class="box-title">My garden</h3>
+    <div className="my-garden">
+      <h3 className="box-title">My garden</h3>
 
-      <div class="garden-list">
+      <div className="garden-list">
         <p>veg</p>
-        {each-user}
+       
           <p>veg</p>
-        {each}
       </div>
 
     </div>

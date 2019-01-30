@@ -22,11 +22,6 @@ body{
   justify-content: center;
 }
 
-.view-top{
-  grid-area: view-top;
-}
-
-
 .my-garden{
   grid-area: my-garden;
   justify-self: center;
@@ -77,6 +72,9 @@ body{
   padding: 1em;
 }
 
+.table{
+  grid-area: view-top;
+}
 
 /* Typography */
 .box-title{

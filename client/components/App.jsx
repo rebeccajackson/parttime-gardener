@@ -1,30 +1,19 @@
 import React from 'react'
 import {HashRouter as Router, Route} from 'react-router-dom'
 
-
-import Table from './Table'
-import MyGarden from './MyGarden'
+import Home from './Home'
 import View from './View'
-
 
 const App = () => {
   return (
     <Router>
       
       <div>
-        <h1>Welcome</h1>
-        
-        <div>
-          <Route path='/view' component={View} />
-        </div>
-
-
+        <Route exact path='/' component={Home} />
+        <Route path='/view' component={View} />
       </div>
-
-
       
     </Router>
-
   )
 }
 
