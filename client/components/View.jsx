@@ -11,8 +11,8 @@ const View = () => {
     <Router>
       <div id="view-page">
         <Route path='/view' component={Table} />
-        <Route path='/view' component={MyGarden} />
-        <Route path='/view' component={ViewMonth} />
+        <Route path='/view/:usergarden' component={MyGarden} />
+        <Route path='/view/:month' component={ViewMonth} />
       </div>
     </Router>
 
