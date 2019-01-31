@@ -9,7 +9,6 @@ const Home = () => {
     <div className="home">
       <h1>Home</h1>
       <Link to='/view'>View</Link>
-      {/* <Route path='/view' component={View}/> */}
     </div>
 
     </Router>

@@ -10,11 +10,9 @@ const View = () => {
   return (
     <Router>
       <div id="view-page">
-        
         <Route path='/view' component={Table} />
         <Route path='/view' component={MyGarden} />
         <Route path='/view' component={ViewMonth} />
-
       </div>
     </Router>
 
