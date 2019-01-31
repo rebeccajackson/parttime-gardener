@@ -1,53 +1,31 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 import months from '../../data/months'
 
 
-const Table = () => {
+const Table = ({match}) => {
   const monthsArr = months.months
 
   return(
 
     <div className='table'>
-    <ul>
-      {monthsArr.map(index => <li className={`${index.season} month-letter`}>{index.name.charAt(0)}</li>)}
-    </ul>
+      
+      <div className='months-header grid12'>
+        {monthsArr.map(index => 
+          <div className={`${index.season} ${index.name} month-letter`}>
+            <Link to={`${match.url}/months`}>
+                {index.name.charAt(0)}
+            </Link> 
+          </div>
+        )}
+      </div>
+    
+      <div className='planting-month'>
 
+      </div> 
     </div>
-    // <table className="table">
-    //   <thead>
-    //     <tr>
-    //       <th className="summer month-letter"> <a href=""> J</a></th>
-    //       <th className="summer month-letter"> <a href=""> F</a></th>
-    //       <th className="autumn month-letter"> <a href=""> M</a></th>
-    //       <th className="autumn month-letter"> <a href=""> A</a></th>
-    //       <th className="autumn month-letter"> <a href=""> M</a></th>
-    //       <th className="winter month-letter"> <a href=""> J</a></th>
-    //       <th className="winter month-letter"> <a href=""> J</a></th>
-    //       <th className="winter month-letter"> <a href=""> A</a></th>
-    //       <th className="spring month-letter"> <a href=""> S</a></th>
-    //       <th className="spring month-letter"> <a href=""> O</a></th>
-    //       <th className="spring month-letter"> <a href=""> N</a></th>
-    //       <th className="summer month-letter" > <a href=""> D</a></th>
-    //     </tr>
-    //   </thead>
-    //   <tbody>
-    //     <tr>
-    //       <td>test</td>
-    //       <td>test</td>
-    //       <td>test</td>
-    //       <td>test</td>
-    //       <td>test</td>
-    //       <td>test</td>
-    //       <td>test</td>
-    //       <td>test</td>
-    //       <td>test</td>
-    //       <td>test</td>
-    //       <td>test</td>
-    //       <td>test</td>
-    //     </tr>
-    //   </tbody>
-    // </table>
+
   )
 }
 

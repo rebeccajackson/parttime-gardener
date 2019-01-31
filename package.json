@@ -8,9 +8,9 @@
   "license": "ISC",
   "scripts": {
     "client": "webpack-dev-server --hot --inline",
-    "dev": "node server & webpack --watch",
-    "server": "node server",
-    "start": "webpack && node server --watch",
+    "dev": "node server --watch",
+    "server": "node server --watch",
+    "start": "webpack --watch",
     "test": "jest --watchAll"
   },
   "babel": {

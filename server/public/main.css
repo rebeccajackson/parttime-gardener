@@ -48,6 +48,10 @@ body{
     box-shadow: 13px 14px 65px -24px rgba(156,150,156,0.81);
 }
 
+.table{
+  grid-area: view-top;
+}
+
 .month-name{
   grid-area: month-name;
 }
@@ -72,8 +76,26 @@ body{
   padding: 1em;
 }
 
-.table{
-  grid-area: view-top;
+.grid12{
+  display: grid;
+  grid-template: 'a b c d e f g h i j k l' 50px
+  /1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.January{
+  grid-area: a;
+}
+
+.Febuary{
+  grid-area: b;
+}
+
+.March{
+  grid-area: c;
+}
+
+.April{
+  grid-area: d
 }
 
 /* Typography */
@@ -90,12 +112,12 @@ body{
   font-size: 2em;
 
 }
-th a{
+.month-letter{
   list-style-type: none; 
   color: black;
 }
 
-.month-letter, td{
+.month-letter{
   border: 1px solid black;
   text-align: center;
 }
