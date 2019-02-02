@@ -2,11 +2,12 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 import months from '../../data/months'
+import veg_months from '../../data/veg_months'
+import veg from '../../data/veg'
 
-
-const Table = () => {
+const Table = ({match}) => {
   const monthsArr = months.months
-
+console.log(match)
   return(
 
     <div className='table'>
@@ -22,7 +23,7 @@ const Table = () => {
       </div>
     
       <div className='planting-month'>
-
+        {}
       </div> 
     </div>
 

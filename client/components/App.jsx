@@ -13,6 +13,8 @@ const App = () => {
    
  
           <Route path='/' component={Table} />
+          <Route path='/:plantingmonths' component={Table} />
+
           <div className='contents'>
             <Route exact path='/' component={Home} />
             <Route path='/view/:usergarden' component={MyGarden} />
