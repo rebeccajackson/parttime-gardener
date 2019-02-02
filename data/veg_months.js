@@ -2,7 +2,6 @@ const veg_months = {
   veg_month:[
     {veg_id: 1, month_id: 1},
     {veg_id: 1, month_id: 2},
-    {veg_id: 1, month_id: 1},
     {veg_id: 1, month_id: 11},
     {veg_id: 1, month_id: 12},
     {veg_id: 2, month_id: 8},
@@ -62,9 +61,7 @@ const veg_months = {
     {veg_id: 13, month_id: 11},
     {veg_id: 13, month_id: 12},
     {veg_id: 13, month_id: 1},
-    {veg_id: 14, month_id: 1},
-    {veg_id: 14, month_id: 1},
-    {veg_id: 14, month_id: 1},
+    {veg_id: 14, month_id: 1}
   ]
 }
 

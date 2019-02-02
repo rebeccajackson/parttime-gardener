@@ -9,6 +9,9 @@
 
 body{
   font-family: 'Montserrat', sans-serif;
+  background-image: url('/images/nathan-dumlao-505059-unsplash.jpg');
+  background-size: cover;
+
 }
 
 #home{
@@ -25,9 +28,9 @@ body{
 .contents{
   grid-area: contents;
   display: grid;
-  grid-template: '. my-garden . view-month .' auto
-    '.home-page home-page home-page .' auto
-  /5% 1fr  5% 3fr 5%;
+  width: 100%;
+  grid-template: '. my-garden . view-month .'80%
+  /5% 1fr  10px 3fr 5%;
   color: rgb(32, 32, 32);
   grid-gap: 10px;
   margin: 2em;
@@ -53,7 +56,6 @@ body{
   'box1 box2 box3' 100%
   /2fr 2fr 2fr;
   justify-self: center;
-  border-radius: 5px;
 }
 
 .table{
@@ -66,6 +68,7 @@ body{
 
 .box1{
   grid-area: box1;
+  border-bottom-left-radius: 5px;
 }
 
 .box2{
@@ -74,10 +77,14 @@ body{
 
 .box3{
   grid-area: box3;
+  border-bottom-right-radius: 5px;
 }
 
 .month-box{
-  background-color: rgba(119, 250, 163, 0.623);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
   border: 1px solid rgb(99, 99, 99);
   padding: 1em;
 
@@ -95,7 +102,8 @@ body{
   text-align: center;
   height: 100%;
   line-height: 70px;
-  background-color:  rgba(189, 189, 189, 0.288);
+  font-size: 2em;
+  background-color: rgba(255, 255, 255, 0.781);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
@@ -116,7 +124,7 @@ body{
 
 
 .garden-list{
-  background-color: rgba(250, 156, 119, 0.623);
+  background-color: white;
   border: 1px solid rgb(99, 99, 99);
   display: flex;
   flex-direction: column;
@@ -130,7 +138,7 @@ body{
 .veg-body{
   display: flex;
   align-items: flex-start;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .veg-title h1{
@@ -138,20 +146,45 @@ body{
   align-items: space-evenly;
   justify-content: center;
 }
+
+.vegList-box{
+  text-align: center;
+  padding-top: 15px;
+ 
+}
+ 
+.vegNameList{
+  text-decoration: none;
+  color: black;
+}
+.vegNameList:hover{
+  color: #187e38;
+  font-size: 1.5em;
+}
+
+/* Images */
+.icon{
+  width: 3em;
+  height: 3em;
+}
+
+
+
+
 /* Colors */
 
 .summer{
-  background-color: rgba(175, 59, 59, 0.788)
+  background-color: rgba(175, 59, 59, 0.856)
 }
 
 .autumn{
-  background-color: rgba(202, 115, 74, 0.788)
+  background-color: rgba(202, 114, 74, 0.877)
 }
 
 .winter{
-  background-color: rgba(74, 183, 202, 0.788)
+  background-color: rgba(74, 183, 202, 0.89)
 }
 
 .spring{
-  background-color: rgba(74, 183, 202, 0.788)
+  background-color: rgba(74, 202, 95, 0.87)
 }
