@@ -11,10 +11,10 @@ const Table = () => {
 
     <div className='table'>
       
-      <div className='months-header grid12'>
+      <div className='grid12'>
         {monthsArr.map((index, i) => 
-          <div className={`${index.season} ${index.name} month-letter`}>
-            <Link key={i} to={`/view/${index.name}`}>
+          <div className={`${index.season} ${index.name} table-header`}>
+            <Link className='month-letter' key={i} to={`/view/${index.name}`}>
                 {index.name.charAt(0)}
             </Link> 
           </div>

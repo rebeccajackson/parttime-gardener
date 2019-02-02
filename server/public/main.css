@@ -11,11 +11,23 @@ body{
   font-family: 'Montserrat', sans-serif;
 }
 
-#view-page{
+#home{
   display: grid;
-  grid-template: '. view-top view-top view-top .' 30vh
-    '. my-garden . view-month .' auto
-  /5% 30% 5% 55% 5%;
+  grid-template: '. table .' 30vh
+    '. contents .' 70vh
+  /5% 90% 5%;
+  color: rgb(32, 32, 32);
+  grid-gap: 10px;
+  margin: 2em;
+  justify-content: center;
+}
+
+.contents{
+  grid-area: contents;
+  display: grid;
+  grid-template: '. my-garden . view-month .' auto
+    '.home-page home-page home-page .' auto
+  /5% 1fr  5% 3fr 5%;
   color: rgb(32, 32, 32);
   grid-gap: 10px;
   margin: 2em;
@@ -28,28 +40,24 @@ body{
   width: 100%;
   display: grid;
   grid-template: 'h3' 70px
-    'garden-list' 300px
+    'garden-list' 100%
     /100%;
-    -webkit-box-shadow: 13px 14px 65px -24px rgba(156,150,156,0.81);
-    -moz-box-shadow: 13px 14px 65px -24px rgba(156,150,156,0.81);
-    box-shadow: 13px 14px 65px -24px rgba(156,150,156,0.81);
 
 }
 
 .view-month{
-  justify-self: center;
   grid-area: view-month;
   width: 100%;
   display: grid;
   grid-template: 'month-name month-name month-name' 70px
-    'box1 box2 box3' 300px
-    /2fr 2fr 2fr;
-
-    box-shadow: 13px 14px 65px -24px rgba(156,150,156,0.81);
+  'box1 box2 box3' 100%
+  /2fr 2fr 2fr;
+  justify-self: center;
+  border-radius: 5px;
 }
 
 .table{
-  grid-area: view-top;
+  grid-area: table;
 }
 
 .month-name{
@@ -58,7 +66,6 @@ body{
 
 .box1{
   grid-area: box1;
-  border-bottom-left-radius: 5px;
 }
 
 .box2{
@@ -67,13 +74,13 @@ body{
 
 .box3{
   grid-area: box3;
-  border-bottom-right-radius: 5px;
 }
 
 .month-box{
   background-color: rgba(119, 250, 163, 0.623);
   border: 1px solid rgb(99, 99, 99);
   padding: 1em;
+
 }
 
 .grid12{
@@ -82,21 +89,6 @@ body{
   /1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
-.January{
-  grid-area: a;
-}
-
-.Febuary{
-  grid-area: b;
-}
-
-.March{
-  grid-area: c;
-}
-
-.April{
-  grid-area: d
-}
 
 /* Typography */
 .box-title{
@@ -109,17 +101,17 @@ body{
 }
 
 .month-letter{
-  font-size: 2em;
-
-}
-.month-letter{
-  list-style-type: none; 
   color: black;
+  text-decoration: none;
+  font-size: 1.2em;
+
 }
 
-.month-letter{
+.table-header{
   border: 1px solid black;
   text-align: center;
+  line-height: 50px;
+  height: 100%;
 }
 
 
@@ -140,6 +132,7 @@ body{
   align-items: flex-start;
   justify-content: space-around;
 }
+
 .veg-title h1{
   display: flex;
   align-items: space-evenly;
