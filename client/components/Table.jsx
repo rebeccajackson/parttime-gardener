@@ -12,9 +12,9 @@ const Table = () => {
     <div className='table'>
       
       <div className='months-header grid12'>
-        {monthsArr.map(index => 
+        {monthsArr.map((index, i) => 
           <div className={`${index.season} ${index.name} month-letter`}>
-            <Link to={`/view/${index.name}`}>
+            <Link key={i} to={`/view/${index.name}`}>
                 {index.name.charAt(0)}
             </Link> 
           </div>

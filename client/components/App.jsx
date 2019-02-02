@@ -1,18 +1,19 @@
 import React from 'react'
 import {HashRouter as Router, Route} from 'react-router-dom'
 
-import Home from './Home'
-import View from './View'
+import MyGarden from './MyGarden'
+import ViewMonth from './ViewMonth'
+import Table from './Table'
 
-const App = () => {
-  return (
+const App = () => {  
+  return(
     <Router>
-      
-      <div>
-        <Route exact path='/' component={Home} />
-        <Route path='/view' component={View} />
+      <div id="view-page">
+        <Route path='/' component={Table} />
+        <Route path='/view/:usergarden' component={MyGarden} />
+        <Route path='/view/:month' component={ViewMonth} />      
       </div>
-      
+
     </Router>
   )
 }
