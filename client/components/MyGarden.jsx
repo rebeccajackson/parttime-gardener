@@ -6,7 +6,9 @@ import users from "../../data/users";
 import veg from "../../data/veg";
 
 const MyGarden = ({match}) => {
-  const userName = users.user[0].name
+const userName = users.user[0].name
+
+console.log(match)
  
   return(
     <div className="my-garden">
@@ -14,7 +16,7 @@ const MyGarden = ({match}) => {
 
       <div className="garden-list">
         {veg.veges.map((obj, i) => 
-          <Link className='vegNameList' key={i} to={'/plantVeg'}>{obj.name}
+          <Link className='vegNameList' key={i} id={obj.id} to={`/plantingmonths/${obj.id}`}>{obj.name}
           </Link>
           )}
       </div>

@@ -10,19 +10,13 @@ const App = () => {
   return(
     <Router>
       <div id="home">
-   
- 
-          <Route path='/' component={Table} />
-          <Route path='/:plantingmonths' component={Table} />
-
-          <div className='contents'>
-            <Route exact path='/' component={Home} />
-            <Route path='/view/:usergarden' component={MyGarden} />
-            <Route path='/view/:month' component={ViewMonth} />      
-          </div>
-
+        <Route path='/' component={Table} />
+        <div className='contents'>
+          <Route exact path='/' component={Home} />
+          <Route path='/view' component={MyGarden} />
+          <Route path='/view/:month' component={ViewMonth} />      
+        </div>
       </div>
-
     </Router>
   )
 }
