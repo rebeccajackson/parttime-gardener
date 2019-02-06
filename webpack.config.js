@@ -3,13 +3,13 @@ const path = require('path')
 module.exports = {
   entry: './client/index.js',
   output: {
-    path: path.join(__dirname, 'server/public'),
+    path: path.join(__dirname, 'public'),
     filename: 'bundle.js'
   },
   mode: 'development',
   module: {
     rules: [{
-      test: /\.jsx?$/,
+      test: /\.(js|jsx)$/,
       loader: 'babel-loader',
       exclude: /node_modules/
     }]
@@ -19,6 +19,9 @@ module.exports = {
   },
   devtool: 'source-map',
   devServer: {
-    contentBase: './server/public'
-  }
+    contentBase: './public'
+  },
+  node: {
+    fs: "empty"
+ }
 }

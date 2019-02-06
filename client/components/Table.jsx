@@ -1,28 +1,41 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-import months from '../../data/months'
-import veg_months from '../../data/veg_months'
-import veg from '../../data/veg'
 import PlantingMonth from './PlantingMonth';
+
+import {getMonths} from '../api/months'
+// import veg_months from '../../data/veg_months'
 
 class Table extends React.Component{
   constructor(props){
     super(props)
+    this.state = {
+      months: []
+    }
+    this.getMonths = this.getMonths.bind(this)
   }
-  
-  render(){
-    const monthsArr = months.months
-    return(
 
+  componentDidMount(){
+    this.getMonths()
+  }
+
+  getMonths(){
+    getMonths().then(months => {
+      this.setState({months: months})
+    })
+  }
+
+  render(){
+    const monthsArr = this.state.months
+
+    return(
       <div className='table'>
-         
         <div className='header-grid'>
           <div className='grid12'>
-            {monthsArr.map((index, i) => 
-              <Link className='month-letter heartbeat' key={i} to={`/view/${index.name}`}>
-                  <div className={`${index.season} table-header`}>
-                    {index.name.charAt(0)}
+            {monthsArr.map((month, i) => 
+              <Link className='month-letter heartbeat' key={i} to={`/months/${month.name}`}>
+                  <div className={`${month.season} table-header`}>
+                    {month.name.charAt(0)}
                   </div>
               </Link> 
             )}
@@ -31,21 +44,17 @@ class Table extends React.Component{
   
         <div className='plantingMonths'> 
           <div className='grid12'>
-            {monthsArr.map((index, i) => 
-              <div key={i} className={`${index.name} plantingMonths-header`}>
-                <PlantingMonth show={index.show} id={index.id}/>
-                
+            {monthsArr.map((month, i) => 
+              <div key={i} className={`${month.name} plantingMonths-header`}>
               
+                <PlantingMonth show={month.show} id={month.id}/>
               </div>
               )}
-          </div>
+          </div> 
         </div>
-  
       </div>
-     
     )
   }
-  
 }
 
 export default Table
