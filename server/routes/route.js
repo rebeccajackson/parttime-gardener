@@ -26,7 +26,6 @@ router.get('/', (req,res)=>{
 })
 
 router.get('/months/:monthName', (req,res) => {
-  console.log(req.params)
   db.getMonths(req.params.name)
   .then(month =>{
     res.json(month)
