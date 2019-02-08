@@ -11,7 +11,7 @@ module.exports = {
 }
 
 function getVeges(){
-  return db('veg').select()
+  return db('veg').select().orderBy('name')
 }
 
 function getMonths(){
@@ -24,9 +24,10 @@ function getUsers(){
 }
 
 function getMonth(monthName){
+  console.log(monthName)
   return db('months')
-  .where('month.name', monthName)
-  .select()
+  .where('name', monthName)
+  .select().first()
 }
 // TODO
 //function to get veg objects where the veg_id is in the veg_month table that matches the month.id

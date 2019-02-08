@@ -8,7 +8,7 @@
   "license": "ISC",
   "scripts": {
     "client": "webpack-dev-server --hot --inline",
-    "dev": "node server --watch",
+    "dev": "nodemon server --watch",
     "server": "node server --watch",
     "start": "webpack --watch",
     "test": "jest --watchAll"
@@ -31,6 +31,7 @@
   "dependencies": {
     "express": "^4.16.4",
     "knex": "^0.16.3",
+    "nodemon": "^1.18.9",
     "sqlite3": "^4.0.6",
     "superagent": "^4.0.0-beta.5"
   },

@@ -25,11 +25,13 @@ router.get('/', (req,res)=>{
   })
 })
 
-router.get('/months/:monthName', (req,res) => {
-  db.getMonths(req.params.name)
+router.post('/months', (req,res) => {
+  db.getMonth(req.params.monthName)
   .then(month =>{
     res.json(month)
   })
 })
+
+router.post('/')
 
 module.exports = router

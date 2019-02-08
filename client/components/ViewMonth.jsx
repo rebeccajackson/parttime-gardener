@@ -3,7 +3,8 @@ import {Link} from 'react-router-dom'
 
 import MyGarden from './MyGarden'
 
-// import veg_months from 
+
+import {getVegesByUser} from '../api/vegs'
 import {getVeges} from '../api/vegs'
 import {getMonth} from '../api/months'
 
@@ -25,7 +26,7 @@ class ViewMonth extends React.Component {
   }
 
   getVeges(){
-    getVeges().then(veges => {
+    getVegesByUser().then(veges => {
       this.setState({veges: veges})
     })
   }
