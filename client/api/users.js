@@ -7,3 +7,9 @@ export function getUsers(){
     return res.body
   })
 }
+export function getUserById(userId){
+  return request.post('/api', userId)
+  .then(res => {
+    return res.body
+  })
+}

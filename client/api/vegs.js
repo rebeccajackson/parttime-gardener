@@ -8,7 +8,7 @@ export function getVeges(){
   })
 }
 
-export function getVegesByUser(){
+export function getVegesByUser(userId){
   return request.post('/api', userId)
   .then(res => {
     return res.body

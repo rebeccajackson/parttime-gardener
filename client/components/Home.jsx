@@ -1,5 +1,6 @@
 import React from 'react'
-import { getUsers } from '../api/users';
+
+import { getUserByName } from '../api/users';
 
 class Home extends React.Component{
   constructor(props){
@@ -18,7 +19,7 @@ class Home extends React.Component{
   }
   
   handleSubmit(event) {
-    getUsers(this.state.value);
+    getUserByName(this.state.value);
     event.preventDefault();
   }
 
