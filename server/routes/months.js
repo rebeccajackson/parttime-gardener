@@ -4,13 +4,6 @@ const router = express.Router()
 
 router.use(express.json())
 
-router.get('/', (req,res)=>{
-  db.getVeges()
-  .then(veges => {
-    res.json(veges)
-  })
-})
-
 router.get('/months', (req,res)=>{
   db.getMonths()
   .then(months => {
@@ -18,21 +11,11 @@ router.get('/months', (req,res)=>{
   })
 })
 
-router.get('/', (req,res)=>{
-  db.getUsers()
-  .then(users => {
-    res.json(users)
-  })
-})
-
-router.post('/months', (req,res) => {
-  console.log(req.params.monthName)
-  db.getMonth(req.params.monthName)
+router.post('/months/:month', (req,res) => {
+  db.getMonth(req.params.month)
   .then(month =>{
     res.json(month)
   })
 })
-
-
 
 module.exports = router

@@ -33,7 +33,10 @@ class Table extends React.Component{
         <div className='header-grid'>
           <div className='grid12'>
             {monthsArr.map((month, i) => 
-              <Link className='month-letter heartbeat' key={i} to={`/months/${month.name}`}>
+              <Link className='month-letter heartbeat' key={i} to={{
+                pathname: `/months/${month.name}`,
+                state: {month: month}
+                }}>
                   <div className={`${month.season} table-header`}>
                     {month.name.charAt(0)}
                   </div>

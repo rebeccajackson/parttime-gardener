@@ -2,6 +2,7 @@ import React, {Fragment} from 'react'
 import {Link} from 'react-router-dom'
 
 import MyGarden from './MyGarden'
+import SeasonInfo from './SeasonInfo'
 
 
 import {getVegesByUser} from '../api/vegs'
@@ -21,19 +22,24 @@ class ViewMonth extends React.Component {
   }
 
   componentDidMount(){
-    this.getVeges()
-    this.getMonth()
+    let { monthName } = this.props.match.params.month
+    this.getMonth(monthName)
   }
 
+  componentDidReceiveProps(nextProps) {
+    const { month } = nextProps
+    if (month && !this.props.month) this.getMonth(month)
+  }
+  
   getVeges(){
     getVeges().then(veges => {
       this.setState({veges: veges})
     })
   }
-  getMonth(){
-    let monthName = this.props.match.params.month
+  getMonth(monthName){
     getMonth(monthName).then(month => {
-      this.setState({month: month})
+    
+      return this.setState({month: month})
     })
   }
   render(){
@@ -46,8 +52,7 @@ class ViewMonth extends React.Component {
           <h3 className="month-name box-title">{this.state.month.name}</h3>
   
           <div className="month-box box1 ">
-          <img className="icon" src="" alt=""/>
-            <p>eg carrots</p>
+            <SeasonInfo month={this.state.month} />
           </div>
   
           <div className="month-box box2">

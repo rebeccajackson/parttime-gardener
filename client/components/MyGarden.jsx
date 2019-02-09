@@ -2,22 +2,22 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 import {getVeges} from '../api/vegs'
-import {getUsers} from '../api/users'
+import {getUserById} from '../api/users'
 
 class MyGarden extends React.Component{
   constructor(props){
     super(props)
     this.state = {
       veges: [],
-      users: []
+      user: []
     }
     this.getVeges = this.getVeges.bind(this)
-    this.getUsers = this.getUsers.bind(this)
+    this.getUser = this.getUser.bind(this)
   }
 
   componentDidMount(){
     this.getVeges()
-    this.getUsers()
+    this.getUser()
   }
 
   getVeges(){
@@ -26,14 +26,10 @@ class MyGarden extends React.Component{
     })
   }
 
-  getUsers(){
-    getUsers().then(users => {
-      this.setState({ users: users})
-    })
-  }
-
+ 
   render(){
-    const userName = this.state.users.name
+    const userName = this.state.users
+    console.log(userName)
     return(
       <div className="my-garden">
         <h3 className="box-title">{userName}'s garden</h3>
