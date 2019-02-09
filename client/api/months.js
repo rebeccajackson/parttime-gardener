@@ -8,7 +8,8 @@ export function getMonths(){
 }
 
 export function getMonth(monthName){
-  return request.post('/api/months', monthName)
+  return request.post('/api/months')
+  .send(monthName)
   .then(res => {
     return res.body
   })

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import PlantingMonth from './PlantingMonth';
 
 import {getMonths} from '../api/months'
-// import veg_months from '../../data/veg_months'
+
 
 class Table extends React.Component{
   constructor(props){

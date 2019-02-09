@@ -26,14 +26,13 @@ class ViewMonth extends React.Component {
   }
 
   getVeges(){
-    getVegesByUser().then(veges => {
+    getVeges().then(veges => {
       this.setState({veges: veges})
     })
   }
   getMonth(){
     let monthName = this.props.match.params.month
     getMonth(monthName).then(month => {
-      
       this.setState({month: month})
     })
   }
