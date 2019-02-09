@@ -15,38 +15,30 @@ class ViewMonth extends React.Component {
     super(props)
     this.state = {
       veges: [],
-      month: []
+      month: [],
+      user: this.props.user
     }
     this.getVeges = this.getVeges.bind(this)
     this.getMonth = this.getMonth.bind(this)
   }
 
-  componentDidMount(){
-    let { monthName } = this.props.match.params.month
-    this.getMonth(monthName)
-  }
 
-  componentDidReceiveProps(nextProps) {
-    const { month } = nextProps
-    if (month && !this.props.month) this.getMonth(month)
-  }
-  
   getVeges(){
-    getVeges().then(veges => {
+    getVegesByUser().then(veges => {
       this.setState({veges: veges})
     })
   }
   getMonth(monthName){
     getMonth(monthName).then(month => {
-    
-      return this.setState({month: month})
+      this.setState({month: month})
     })
   }
   render(){
+    console.log(this.props.user)
 
     return(
       <Fragment>
-        <MyGarden />
+        <MyGarden user={this.state.user}/>
         
         <div className="view-month">
           <h3 className="month-name box-title">{this.state.month.name}</h3>

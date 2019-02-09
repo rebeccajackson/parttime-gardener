@@ -14,7 +14,6 @@ router.get('/', (req,res)=>{
 router.post('/', (req,res)=>{
   db.getUserByName(req.body.name)
   .then(user =>{
-    console.log(user)
     res.json(user)
   })
 })

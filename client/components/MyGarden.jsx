@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import {Link} from 'react-router-dom'
 
 import {getVeges} from '../api/vegs'
@@ -9,15 +9,13 @@ class MyGarden extends React.Component{
     super(props)
     this.state = {
       veges: [],
-      user: []
+      user: this.props.user
     }
     this.getVeges = this.getVeges.bind(this)
-    this.getUser = this.getUser.bind(this)
   }
 
   componentDidMount(){
     this.getVeges()
-    this.getUser()
   }
 
   getVeges(){
@@ -28,20 +26,23 @@ class MyGarden extends React.Component{
 
  
   render(){
-    const userName = this.state.users
+    const userName = this.state.user.name
     console.log(userName)
     return(
-      <div className="my-garden">
-        <h3 className="box-title">{userName}'s garden</h3>
+      <Fragment>
+         <div className="my-garden">
+          <h3 className="box-title">{userName}'s garden</h3>
 
-        <div className="garden-list">
-          {this.state.veges.map((obj, i) => 
+          <div className="garden-list">
+            {this.state.veges.map((obj, i) => 
 
-            <Link className='vegNameList' key={i} id={obj.id} name={obj.name} to={`/${obj.id}`}>{obj.name}
-            </Link>
-            )}
+              <Link className='vegNameList' key={i} id={obj.id} name={obj.name} to={`/${obj.id}`}>{obj.name}
+              </Link>
+              )}
+          </div>
         </div>
-      </div>
+      </Fragment>
+     
     )
   }
 }
