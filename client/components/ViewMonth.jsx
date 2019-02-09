@@ -34,8 +34,6 @@ class ViewMonth extends React.Component {
     })
   }
   render(){
-    console.log(this.props.user)
-
     return(
       <Fragment>
         <MyGarden user={this.state.user}/>

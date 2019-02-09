@@ -8,14 +8,6 @@ export function getUsers(){
   })
 }
 
-export function getUserById(userId){
-  console.log(userId)
-  return request.post('/api', userId)
-  .then(res => {
-    return res.body
-  })
-}
-
 export function getUserByName(user){
   return request.post('/api')
   .send(user)

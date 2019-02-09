@@ -18,12 +18,5 @@ router.post('/', (req,res)=>{
   })
 })
 
-router.post('/garden', (req,res)=>{
-  console.log(req.params.userId)
-  db.getUserById(req.params.userId)
-  .then(user =>{
-    res.json(user)
-  })
-})
 
 module.exports = router

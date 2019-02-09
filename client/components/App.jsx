@@ -10,7 +10,7 @@ const App = () => {
       <div id="home">
         <Table />
         <div className='contents'>
-          <Route exact path='/' component={Home} />
+          <Route path='/' component={Home} />
         </div>
       </div>
     </Router>

@@ -27,7 +27,6 @@ class MyGarden extends React.Component{
  
   render(){
     const userName = this.state.user.name
-    console.log(userName)
     return(
       <Fragment>
          <div className="my-garden">
