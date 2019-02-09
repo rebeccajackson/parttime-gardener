@@ -7,7 +7,8 @@ module.exports = {
   getVeges,
   getMonths,
   getUsers,
-  getMonth
+  getMonth,
+  getUserByName
 }
 
 function getVeges(){
@@ -24,9 +25,14 @@ function getUsers(){
 }
 
 function getMonth(monthName){
-  console.log(monthName)
   return db('months')
   .where('name', monthName)
+  .select().first()
+}
+
+function getUserByName(name){
+  return db('users')
+  .where('name', name)
   .select().first()
 }
 // TODO
