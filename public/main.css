@@ -30,7 +30,7 @@ body{
   grid-area: contents;
   display: grid;
   width: 100%;
-  grid-template: '. my-garden . view-month .'80%
+  grid-template: '. my-garden . view-container .'80%
   /5% 1fr  10px 3fr 5%;
   color: rgb(32, 32, 32);
   grid-gap: 10px;
@@ -49,8 +49,8 @@ body{
 
 }
 
-.view-month{
-  grid-area: view-month;
+.view-container{
+  grid-area: view-container;
   width: 100%;
   display: grid;
   grid-template: 'month-name month-name month-name' 70px

@@ -15,3 +15,13 @@ export function getUserByName(user){
     return res.body
   })
 }
+
+
+export function getVegesByUser(user){
+  console.log(user)
+  return request.post('/api/veg')
+  .send(user)
+  .then(res => {
+    return res.body
+  })
+}

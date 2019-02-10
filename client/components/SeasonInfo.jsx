@@ -7,7 +7,7 @@ class SeasonInfo extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      month: []
+      month: this.props.month
     }
   } 
 

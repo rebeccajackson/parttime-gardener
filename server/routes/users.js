@@ -18,5 +18,12 @@ router.post('/', (req,res)=>{
   })
 })
 
+router.post('/veg', (req,res)=> {
+  db.getVegesByUser(req.body.id)
+  .then(veges =>{
+    res.json(veges)
+  })
+})
+
 
 module.exports = router

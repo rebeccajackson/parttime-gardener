@@ -1,7 +1,7 @@
 
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('garden', (table) => {
-    table.increments('id')
+    table.integer('veg_id')
     table.integer('user_id')
   })
 };

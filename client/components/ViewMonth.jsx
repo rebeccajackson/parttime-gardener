@@ -1,7 +1,6 @@
 import React, {Fragment} from 'react'
 import {Link} from 'react-router-dom'
 
-import MyGarden from './MyGarden'
 import SeasonInfo from './SeasonInfo'
 
 
@@ -36,9 +35,8 @@ class ViewMonth extends React.Component {
   render(){
     return(
       <Fragment>
-        <MyGarden user={this.state.user}/>
-        
-        <div className="view-month">
+      
+        <div className="view-container">
           <h3 className="month-name box-title">{this.state.month.name}</h3>
   
           <div className="month-box box1 ">

@@ -1,7 +1,8 @@
 import React, {Fragment} from 'react'
 import {HashRouter as Router, Route} from 'react-router-dom'
 
-import ViewMonth from './ViewMonth'
+import ViewRoutes from './ViewRoutes'
+import MyGarden from './MyGarden'
 
 import { getUserByName } from '../api/users';
 
@@ -37,7 +38,8 @@ class Home extends React.Component{
   render(){
     return(
       <Router>
-        <Fragment>
+        
+        <div className='contents'>
           {!this.state.login &&  <div className="home-page">
             <form onSubmit={this.handleSubmit}>
               <label>
@@ -49,14 +51,13 @@ class Home extends React.Component{
           </div>}
 
           {this.state.login && 
-            <ViewMonth user={this.state.user}/> 
+            <Fragment>
+              <MyGarden user={this.state.user} />
+              <ViewRoutes path='/veg' user={this.state.user}/>
+            </Fragment>
           }        
-        
-          {/* <Route path='/veg/:veg' component={ViewVeg} />  */}
-        </Fragment>
+        </div>
       </Router>
-      
-      
     )
   }
 }

@@ -8,7 +8,8 @@ module.exports = {
   getMonths,
   getUsers,
   getMonth,
-  getUserByName
+  getUserByName,
+  getVegesByUser
 }
 
 function getVeges(){
@@ -35,6 +36,11 @@ function getUserByName(name){
   .where('name', name)
   .select().first()
 }
-// TODO
-//function to get veg objects where the veg_id is in the veg_month table that matches the month.id
+
+function getVegesByUser(id){
+  return db('veg')
+  .join('garden', 'garden.veg_id', 'veg.id')
+  .where('garden.user_id', id)
+  .select()
+}
 
