@@ -2,23 +2,9 @@ import React, {Fragment} from 'react'
 
 
 class ViewVeg extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      veg: {},//match url to get current veg??
-      user: this.props.user,
-      veges: this.props.location.veg
-    } 
-  }
-
-  componentDidMount(){
-    this.setState = {
-      veg: this.props.location.veg
-    }
-  }
 
   render(){
-    let {veg, veges }= this.props.location
+    let { veg }= this.props
     return(
       <Fragment>
       

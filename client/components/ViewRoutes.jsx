@@ -7,35 +7,31 @@ import MyGarden from './MyGarden';
 
 
 class ViewRoutes extends React.Component {
- 
 
   render(){
-    console.log('view routes', this.props)
+    const { user, userVeges, month, setVeg, monthVeges } = this.props
     return(
       <Fragment>
         <MyGarden 
            user={this.props.user}
            userVeges={this.props.userVeges}
            month={this.props.month}
+           setVeg={this.props.setVeg}
+           monthVeges={this.props.monthVeges}
         />
         <Switch>
-          <Route path='/veg' render={(props) => (
+        <Route path='/veg' render={(props) => (
               <ViewVeg
               user={this.props.user}
               userVeges={this.props.userVeges}
+              setVeg={this.props.setVeg}
+              monthVeges={this.props.monthVeges}
               />
             )} />
          
-          <Route path='/months/:month' render={(props) => (
-              <ViewMonth 
-              user={this.props.user}
-              month={this.props.month}
-              userVeges={this.props.userVeges}
-              />
+          <Route path='/months' render={(props) => (
+              <ViewMonth setVeg={this.props.setVeg}/>
             )} />
-
-          
-          
         </Switch>
         
       </Fragment>

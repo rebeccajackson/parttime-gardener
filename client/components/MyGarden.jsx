@@ -3,35 +3,26 @@ import {Link} from 'react-router-dom'
 
 
 class MyGarden extends React.Component{
-  constructor(props){
-    super(props)
-    this.state = {
-      userVeges: this.props.userVeges,
-      user: this.props.user
-    }
-  }
 
   render(){
-    console.log('garden', this.props)
-    const userName = this.props.user.name
+    const { user, userVeges } = this.props
     return(
       <Fragment>
          <div className="my-garden">
-          <h3 className="box-title">{userName}'s garden</h3>
+          <h3 className="box-title">{user.name}'s garden</h3>
 
           <div className="garden-list">
-            {this.props.userVeges.map((obj, i) => 
+            {userVeges.map((obj, i) => 
 
-              <Link className='vegNameList' key={i} to={{
-                pathname: `/veg/${obj.name}`,
-                veg: obj,
-                veges: this.props.userVeges
-                }}>
+              <Link className='vegNameList' key={i} 
+                onClick={this.props.setVeg.bind(this, obj)}
+                to={ `/veg/${obj.name}`}>
                 {obj.name}
               </Link>
               )}
           </div>
         </div>
+        
       </Fragment>
      
     )

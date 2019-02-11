@@ -9,7 +9,6 @@ export function getVeges(){
 
 
 export function getUserVeges(user){
-  console.log('api', user)
   return request.post('/api/veg')
   .send(user)
   .then(res => {

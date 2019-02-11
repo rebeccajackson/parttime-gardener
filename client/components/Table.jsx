@@ -6,6 +6,7 @@ import ViewRoutes from './ViewRoutes';
 
 import { getUserVeges } from '../api/vegs';
 import {getMonths} from '../api/months'
+import { getMonthVeges } from '../api/months'
 
 
 class Table extends React.Component{
@@ -14,31 +15,41 @@ class Table extends React.Component{
     this.state = {
       months: [],
       month: {},
-      userVeges: []
+      userVeges: [],
+      veg: {}
     }
     this.getMonths = this.getMonths.bind(this)
   }
 
   componentDidMount(){
     this.getMonths()
-    console.log(this.props.user)
     getUserVeges(this.props.user).then(veges => {
       this.setState({userVeges: veges})
     })
-    
   }
 
+  handleClick = (month) => {
+    return this.setState({
+      month: month
+    }).then(month => {
+      console.log(month)
+      getMonthVeges(month).then(monthVeges => {
+        this.setState({monthVeges: monthVeges})
+      })
+    })
+  }
+  // to={`/months/${month.name}`}
   getMonths(){
     getMonths().then(months => {
       this.setState({months: months})
     })
   }
  
- 
-  handleClick = (month) => {
+  setVeg = (veg) => {
     this.setState({
-      month: month
+      veg: veg
     })
+    
   }
 
   render(){
@@ -49,13 +60,13 @@ class Table extends React.Component{
           <div className='header-grid'>
             <div className='grid12'>
               {monthsArr.map((month, i) => 
-                <Link to={`/months/${month.name}`} onClick={this.handleClick.bind(this, month)} 
+                <button onClick={this.handleClick.bind(this, month)} 
                     className='month-letter heartbeat' key={i}>
                   
                     <div className={`${month.season} table-header`}>
                       {month.name.charAt(0)}
                     </div>
-                </Link> 
+                </button> 
               )}
             </div>  
           </div>
@@ -75,7 +86,9 @@ class Table extends React.Component{
           <ViewRoutes 
           user={this.props.user} 
           userVeges={this.state.userVeges}
-          month={this.state.month}/>
+          month={this.state.month}
+          setVeg={this.setVeg}
+          />
         </div>
       </Fragment>
     )
