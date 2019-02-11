@@ -1,17 +1,19 @@
 import React, {Fragment} from 'react'
-import {HashRouter as Router, Route} from 'react-router-dom'
+import {HashRouter as Router} from 'react-router-dom'
 
-import ViewRoutes from './ViewRoutes'
-import MyGarden from './MyGarden'
+import Table from './Table'
 
 import { getUserByName } from '../api/users';
+
+
 
 class Home extends React.Component{
   constructor(props){
     super(props)
     this.state = {
       user: {},
-      login: false
+      login: false,
+      userVeges: []
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -27,6 +29,7 @@ class Home extends React.Component{
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state.user
+    console.log(user)
     getUserByName(user).then(user => {
       this.setState({ 
         user: user,
@@ -34,12 +37,12 @@ class Home extends React.Component{
       })
     });
   }
+  
 
   render(){
     return(
       <Router>
-        
-        <div className='contents'>
+        <Fragment>
           {!this.state.login &&  <div className="home-page">
             <form onSubmit={this.handleSubmit}>
               <label>
@@ -51,12 +54,11 @@ class Home extends React.Component{
           </div>}
 
           {this.state.login && 
-            <Fragment>
-              <MyGarden user={this.state.user} />
-              <ViewRoutes path='/veg' user={this.state.user}/>
-            </Fragment>
+            <Table 
+            user={this.state.user}
+            />
           }        
-        </div>
+        </Fragment>
       </Router>
     )
   }

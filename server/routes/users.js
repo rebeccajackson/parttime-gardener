@@ -4,13 +4,6 @@ const router = express.Router()
 
 router.use(express.json())
 
-router.get('/', (req,res)=>{
-  db.getUsers()
-  .then(users => {
-    res.json(users)
-  })
-})
-
 router.post('/', (req,res)=>{
   db.getUserByName(req.body.name)
   .then(user =>{
@@ -18,12 +11,7 @@ router.post('/', (req,res)=>{
   })
 })
 
-router.post('/veg', (req,res)=> {
-  db.getVegesByUser(req.body.id)
-  .then(veges =>{
-    res.json(veges)
-  })
-})
+
 
 
 module.exports = router

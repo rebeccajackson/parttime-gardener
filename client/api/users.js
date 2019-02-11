@@ -1,13 +1,5 @@
 import request from 'superagent'
 
-
-export function getUsers(){
-  return request.get('/api')
-  .then(res => {
-    return res.body
-  })
-}
-
 export function getUserByName(user){
   return request.post('/api')
   .send(user)
@@ -16,12 +8,3 @@ export function getUserByName(user){
   })
 }
 
-
-export function getVegesByUser(user){
-  console.log(user)
-  return request.post('/api/veg')
-  .send(user)
-  .then(res => {
-    return res.body
-  })
-}

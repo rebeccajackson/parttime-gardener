@@ -4,40 +4,34 @@ import {Link} from 'react-router-dom'
 import SeasonInfo from './SeasonInfo'
 
 
-import {getVegesByUser} from '../api/vegs'
-import {getVeges} from '../api/vegs'
-import {getMonth} from '../api/months'
-
-
 class ViewMonth extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       veges: [],
-      month: [],
+      month: this.props.month,
       user: this.props.user
     }
-    this.getVeges = this.getVeges.bind(this)
-    this.getMonth = this.getMonth.bind(this)
+    this.getMonthVeges = this.getMonthVeges.bind(this)
+
+  }
+
+  getMonthVeges(){
+    getMonthVeges(this.props.match.params).then(veges => {
+      this.setState({monthVeges: veges})
+    })
   }
 
 
-  getVeges(){
-    getVegesByUser().then(veges => {
-      this.setState({veges: veges})
-    })
-  }
-  getMonth(monthName){
-    getMonth(monthName).then(month => {
-      this.setState({month: month})
-    })
-  }
   render(){
+    console.log(this.state.month)
+    console.log(this.props)
+    let monthName = this.props.match.params.month //need to get the whole object not just the name
     return(
       <Fragment>
       
         <div className="view-container">
-          <h3 className="month-name box-title">{this.state.month.name}</h3>
+          <h3 className="month-name box-title">{monthName}</h3>
   
           <div className="month-box box1 ">
             <SeasonInfo month={this.state.month} />

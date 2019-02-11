@@ -59,6 +59,16 @@ body{
   justify-self: center;
 }
 
+.month-container{
+  grid-area: view-container;
+  width: 100%;
+  display: grid;
+  grid-template: 'month-name month-name' 70px
+  'box1 box3' 100%
+  /2fr 2fr;
+  justify-self: center;
+}
+
 .table{
   grid-area: table;
 }

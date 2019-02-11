@@ -11,7 +11,9 @@ router.get('/months', (req,res)=>{
   })
 })
 
-router.post('/months/:month', (req,res) => {
+router.post('/months', (req,res) => {
+  console.log(req.params)
+  console.log(req.body)
   db.getMonth(req.params.month)
   .then(month =>{
     res.json(month)

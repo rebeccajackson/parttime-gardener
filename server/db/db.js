@@ -6,10 +6,9 @@ const db = knex(config)
 module.exports = {
   getVeges,
   getMonths,
-  getUsers,
-  getMonth,
+  getMonthVeges,
   getUserByName,
-  getVegesByUser
+  getUserVeges
 }
 
 function getVeges(){
@@ -21,26 +20,28 @@ function getMonths(){
 }
 
 
-function getUsers(){
-  return db('users').select()
-}
-
-function getMonth(monthName){
+function getMonthVeges(monthName){
   return db('months')
-  .where('name', monthName)
+  .join('veg_month', 'veg_month.month_id', 'months.id')
+  .where('veg_month.veg_id', monthName)//Need the object id
   .select().first()
 }
 
 function getUserByName(name){
   return db('users')
   .where('name', name)
-  .select().first()
+  .select()
 }
-
-function getVegesByUser(id){
+ 
+function getUserVeges(id){
   return db('veg')
   .join('garden', 'garden.veg_id', 'veg.id')
   .where('garden.user_id', id)
   .select()
 }
 
+// .then(user => {
+//   return db('veg')
+//   .join('garden', 'garden.veg_id', 'veg.id')
+//   .where('garden.user_id', user.id)
+//   .select()
