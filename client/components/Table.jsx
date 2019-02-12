@@ -1,11 +1,13 @@
 import React, {Fragment} from 'react'
-import {HashRouter as Router, Route, Link} from 'react-router-dom'
+import {HashRouter as Router, Route} from 'react-router-dom'
+
 
 import PlantingMonth from './PlantingMonth';
-import ViewRoutes from './ViewRoutes';
+import ViewMonth from './ViewMonth';
+import MyGarden from './MyGarden';
 
 import { getUserVeges } from '../api/vegs';
-import {getMonths} from '../api/months'
+import { getMonths } from '../api/months'
 import { getMonthVeges } from '../api/months'
 
 
@@ -17,6 +19,8 @@ class Table extends React.Component{
       month: {},
       userVeges: [],
       veg: {},
+      redirect: false,
+      setVeg: {}
     }
     this.getMonths = this.getMonths.bind(this)
   }
@@ -36,21 +40,29 @@ class Table extends React.Component{
 
   handleClick = (month) => {
     getMonthVeges(month).then(monthVeges => {
+      console.log(monthVeges)
         this.setState({
         monthVeges: monthVeges,
         month: month,
-        }, () => {
-          this.context.history.push('/months')
+        redirect: true
         })
       }
     )
+  }
+
+  setVeg = (veg) => {
+    this.setState({
+      veg: veg
+    })
+    
   }
     
     render(){
     console.log(this.state.monthVeges)
     const monthsArr = this.state.months
     return(
-      <Fragment>
+      <Router>
+         <Fragment>
         <div className='table'>
           <div className='header-grid'>
             <div className='grid12'>
@@ -79,14 +91,23 @@ class Table extends React.Component{
           </div>
         </div>
         <div className='contents'>
-          <ViewRoutes 
-          user={this.props.user} 
+        <MyGarden 
+          user={this.props.user}
           userVeges={this.state.userVeges}
           month={this.state.month}
           setVeg={this.setVeg}
-          />
+          monthVeges={this.state.monthVeges}
+          veg={this.state.veg}
+        />
+        {this.state.redirect &&
+            <ViewMonth
+            monthVeges={this.state.monthVeges}
+            userVeges={this.state.userVeges}
+            month={this.state.month}/>
+          }
         </div>
       </Fragment>
+      </Router>
     )
   }
 }

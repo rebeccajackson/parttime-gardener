@@ -1,21 +1,16 @@
 import React, {Fragment} from 'react'
-import {Link} from 'react-router-dom'
+import {HashRouter as Router, Link} from 'react-router-dom'
 
 
 class MyGarden extends React.Component{
-  constructor(props){
-    super(props)
-    this.state = {
-      userVeges: this.props.userVeges,
-      veg: this.props.veg
-    }
-  }
+
 
   render(){
-    // console.log(this.props)
+    console.log(this.props)
     const { user, userVeges } = this.props
     return(
-      <Fragment>
+      <Router >
+        <Fragment>
          <div className="my-garden">
           <h3 className="box-title">{user.name}'s garden</h3>
 
@@ -32,6 +27,8 @@ class MyGarden extends React.Component{
         </div>
         
       </Fragment>
+      </Router>
+      
      
     )
   }

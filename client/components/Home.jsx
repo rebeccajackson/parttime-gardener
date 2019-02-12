@@ -41,25 +41,25 @@ class Home extends React.Component{
 
   render(){
     return(
-      <Router>
-        <Fragment>
-          {!this.state.login &&  <div className="home-page">
-            <form onSubmit={this.handleSubmit}>
-              <label>
-                Username:
-                <input type="text" value={this.state.user.name} name='name' onChange={this.handleChange} />
-              </label>
-              <input type="submit" value="Login" />
-            </form>
-          </div>}
+   
+      <Fragment>
+        {!this.state.login &&  <div className="home-page">
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Username:
+              <input type="text" value={this.state.user.name} name='name' onChange={this.handleChange} />
+            </label>
+            <input type="submit" value="Login" />
+          </form>
+        </div>}
 
-          {this.state.login && 
-            <Table 
-            user={this.state.user}
-            />
-          }        
-        </Fragment>
-      </Router>
+        {this.state.login && 
+          <Table 
+          user={this.state.user}
+          />
+        }        
+      </Fragment>
+    
     )
   }
 }
