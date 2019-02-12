@@ -51,8 +51,22 @@ class Table extends React.Component{
     )
   }
   mapToArr = (res)=>{
-    console.log(res)
-    return res.push('something')
+    let monthsArr = []
+    
+    for(var i=1; i <= 12; i++){
+      console.log(i)
+      res.map(month =>{
+        console.log(month.id)
+        if(month.id == i){
+          monthsArr.push({show: 'true'})
+        } else {
+          monthsArr.push({show: 'false'})
+        }
+      }) 
+      
+      return console.log(monthsArr)
+    }
+ 
   }
 
 
