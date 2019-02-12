@@ -7,10 +7,9 @@ export function getMonths(){
   })
 }
 
-export function getMonthVeges(monthName){
-  console.log('api', monthName)
-  return request.post(`/api`)
-  .send(monthName)
+export function getMonthVeges(month){
+  return request.post(`/api/months`)
+  .send(month)
   .then(res => {
     return res.body
   })

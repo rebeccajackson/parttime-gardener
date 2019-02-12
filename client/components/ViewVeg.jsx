@@ -4,6 +4,7 @@ import React, {Fragment} from 'react'
 class ViewVeg extends React.Component {
 
   render(){
+    // console.log('viewveg', this.props)
     let { veg }= this.props
     return(
       <Fragment>

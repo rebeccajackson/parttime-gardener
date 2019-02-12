@@ -12,11 +12,9 @@ router.get('/months', (req,res)=>{
 })
 
 router.post('/months', (req,res) => {
-  console.log(req.params)
-  console.log(req.body)
-  db.getMonth(req.params.month)
-  .then(month =>{
-    res.json(month)
+  db.getMonthVeges(req.body.id)
+  .then(veges =>{
+    res.json(veges)
   })
 })
 

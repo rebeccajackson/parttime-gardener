@@ -20,11 +20,12 @@ function getMonths(){
 }
 
 
-function getMonthVeges(monthName){
-  return db('months')
-  .join('veg_month', 'veg_month.month_id', 'months.id')
-  .where('veg_month.veg_id', monthName)//Need the object id
-  .select().first()
+function getMonthVeges(monthId){
+  console.log(monthId)
+  return db('veg_months')
+  .where('veg_months.month_id', monthId)
+  .join('veg', 'veg.id', 'veg_months.veg_id')
+  .select()
 }
 
 function getUserByName(name){
@@ -39,9 +40,3 @@ function getUserVeges(id){
   .where('garden.user_id', id)
   .select()
 }
-
-// .then(user => {
-//   return db('veg')
-//   .join('garden', 'garden.veg_id', 'veg.id')
-//   .where('garden.user_id', user.id)
-//   .select()

@@ -3,8 +3,16 @@ import {Link} from 'react-router-dom'
 
 
 class MyGarden extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      userVeges: this.props.userVeges,
+      veg: this.props.veg
+    }
+  }
 
   render(){
+    // console.log(this.props)
     const { user, userVeges } = this.props
     return(
       <Fragment>

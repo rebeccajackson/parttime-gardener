@@ -16,7 +16,7 @@ class Table extends React.Component{
       months: [],
       month: {},
       userVeges: [],
-      veg: {}
+      veg: {},
     }
     this.getMonths = this.getMonths.bind(this)
   }
@@ -28,31 +28,26 @@ class Table extends React.Component{
     })
   }
 
-  handleClick = (month) => {
-    return this.setState({
-      month: month
-    }).then(month => {
-      console.log(month)
-      getMonthVeges(month).then(monthVeges => {
-        this.setState({monthVeges: monthVeges})
-      })
-    })
-  }
-  // to={`/months/${month.name}`}
   getMonths(){
     getMonths().then(months => {
       this.setState({months: months})
     })
   }
- 
-  setVeg = (veg) => {
-    this.setState({
-      veg: veg
-    })
-    
-  }
 
-  render(){
+  handleClick = (month) => {
+    getMonthVeges(month).then(monthVeges => {
+        this.setState({
+        monthVeges: monthVeges,
+        month: month,
+        }, () => {
+          this.context.history.push('/months')
+        })
+      }
+    )
+  }
+    
+    render(){
+    console.log(this.state.monthVeges)
     const monthsArr = this.state.months
     return(
       <Fragment>
@@ -61,7 +56,8 @@ class Table extends React.Component{
             <div className='grid12'>
               {monthsArr.map((month, i) => 
                 <button onClick={this.handleClick.bind(this, month)} 
-                    className='month-letter heartbeat' key={i}>
+                    className='month-letter heartbeat' key={i}
+                    >
                   
                     <div className={`${month.season} table-header`}>
                       {month.name.charAt(0)}
