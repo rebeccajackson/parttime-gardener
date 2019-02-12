@@ -21,7 +21,6 @@ function getMonths(){
 
 
 function getMonthVeges(monthId){
-  console.log(monthId)
   return db('veg_months')
   .where('veg_months.month_id', monthId)
   .join('veg', 'veg.id', 'veg_months.veg_id')

@@ -25,10 +25,10 @@ class MyGarden extends React.Component{
               )}
           </div>
         </div>
-        
+        {}
       </Fragment>
       </Router>
-      
+      //if veg is clicked
      
     )
   }

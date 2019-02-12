@@ -4,6 +4,7 @@ import {HashRouter as Router, Route} from 'react-router-dom'
 
 import PlantingMonth from './PlantingMonth';
 import ViewMonth from './ViewMonth';
+import ViewVeg from './ViewVeg';
 import MyGarden from './MyGarden';
 
 import { getUserVeges } from '../api/vegs';
@@ -19,7 +20,7 @@ class Table extends React.Component{
       month: {},
       userVeges: [],
       veg: {},
-      redirect: false,
+      redirect: undefined,
       setVeg: {}
     }
     this.getMonths = this.getMonths.bind(this)
@@ -44,7 +45,7 @@ class Table extends React.Component{
         this.setState({
         monthVeges: monthVeges,
         month: month,
-        redirect: true
+        redirect: 'month'
         })
       }
     )
@@ -52,7 +53,8 @@ class Table extends React.Component{
 
   setVeg = (veg) => {
     this.setState({
-      veg: veg
+      veg: veg,
+      redirect: 'veg'
     })
     
   }
@@ -99,11 +101,18 @@ class Table extends React.Component{
           monthVeges={this.state.monthVeges}
           veg={this.state.veg}
         />
-        {this.state.redirect &&
+        {this.state.redirect === 'month' &&
             <ViewMonth
             monthVeges={this.state.monthVeges}
             userVeges={this.state.userVeges}
             month={this.state.month}/>
+          || this.state.redirect === 'veg' &&
+          <ViewVeg
+            user={this.props.user}
+            userVeges={this.state.userVeges}
+            setVeg={this.setVeg}
+            veg={this.state.veg}
+            />
           }
         </div>
       </Fragment>
