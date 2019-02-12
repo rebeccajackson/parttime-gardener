@@ -6,13 +6,12 @@ class MyGarden extends React.Component{
 
 
   render(){
-    console.log(this.props)
     const { user, userVeges } = this.props
     return(
       <Router >
         <Fragment>
          <div className="my-garden">
-          <h3 className="box-title">{user.name}'s garden</h3>
+          <h3 className="box-title">{user[0].name}'s garden</h3>
 
           <div className="garden-list">
             {userVeges.map((obj, i) => 
@@ -28,7 +27,6 @@ class MyGarden extends React.Component{
         {}
       </Fragment>
       </Router>
-      //if veg is clicked
      
     )
   }

@@ -7,7 +7,7 @@ exports.seed = function(knex, Promise) {
       return knex('veg_months').insert([
         {veg_id: 1, month_id: 1},
         {veg_id: 1, month_id: 2},
-        {veg_id: 1, month_id: 1},
+        {veg_id: 1, month_id: 10},
         {veg_id: 1, month_id: 11},
         {veg_id: 1, month_id: 12},
         {veg_id: 2, month_id: 8},

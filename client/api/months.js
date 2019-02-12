@@ -14,3 +14,12 @@ export function getMonthVeges(month){
     return res.body
   })
 }
+
+export function getPlantingMonthsArr(veg){
+  return request.post(`/api/veg/:vegName`)
+  .send(veg)
+  .then(res => {
+    console.log(res.body)
+    return res.body
+  })
+}

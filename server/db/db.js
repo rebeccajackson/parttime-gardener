@@ -8,7 +8,8 @@ module.exports = {
   getMonths,
   getMonthVeges,
   getUserByName,
-  getUserVeges
+  getUserVeges,
+  getPlantingMonthsArr
 }
 
 function getVeges(){
@@ -24,7 +25,7 @@ function getMonthVeges(monthId){
   return db('veg_months')
   .where('veg_months.month_id', monthId)
   .join('veg', 'veg.id', 'veg_months.veg_id')
-  .select()
+  .select().orderBy('name')
 }
 
 function getUserByName(name){
@@ -37,5 +38,12 @@ function getUserVeges(id){
   return db('veg')
   .join('garden', 'garden.veg_id', 'veg.id')
   .where('garden.user_id', id)
-  .select()
+  .select().orderBy('name')
+}
+
+function getPlantingMonthsArr(veg){
+  return db('veg_months')
+  .where('veg_months.veg_id', veg.id)
+  .join('months', 'months.id', 'veg_months.month_id')
+  .select('veg_months.month_id as id')
 }
