@@ -2,7 +2,6 @@
 import React, {Fragment} from 'react'
 
 const SeasonInfo = ({month}) =>{
-  console.log(month)
   return (
     <Fragment>
       <img className='icon' src={`/images/${month.season}.png`} alt="Seasonal icon"/>

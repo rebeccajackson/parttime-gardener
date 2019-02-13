@@ -51,7 +51,7 @@ function getPlantingMonthsArr(veg){
 
 
 function addToGarden(veg, user){
-  console.log(veg, user)
-  return db('veg_months')
+  return db('garden')
+  .insert({veg_id: veg.id, user_id: user.id})
 
 }

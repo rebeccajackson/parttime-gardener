@@ -9,7 +9,6 @@ export function getUserByName(user){
 }
 
 export function addToGarden(data){
-  console.log('api', data)
   return request.post('/api/info')
   .send(data)
   .then(res => {

@@ -48,7 +48,7 @@ class ViewMonth extends React.Component {
             </div>
 
             <div className="month-box box3">
-              <Info veg={this.state.clickedVeg} user={user}/>
+              <Info veg={this.state.clickedVeg} user={user} addToGarden={this.props.addToGarden}/>
             </div>
     
           </div>

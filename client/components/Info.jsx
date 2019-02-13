@@ -1,5 +1,4 @@
 import React, {Fragment} from 'react'
-import {addToGarden} from '../api/users'
 
 class Info extends React.Component{
 constructor(props){
@@ -8,16 +7,8 @@ constructor(props){
     user: this.props.user
   }
 }
-  addToGarden = (veg) => {
-    const sendData = {user: this.props.user, veg: veg}
-    addToGarden(sendData).then(res => {
-      return console.log(res)
-    }
-    )
-  }
 
   render(){
-    console.log(this.props.user)
     const {veg} = this.props
      return (
       <Fragment>
@@ -32,7 +23,7 @@ constructor(props){
           <br/>
          
         </div>
-        <button className='button' onClick={()=>this.addToGarden(veg)}>
+        <button className='button' onClick={()=>this.props.addToGarden(veg)}>
           Add to garden
         </button>
       </Fragment>

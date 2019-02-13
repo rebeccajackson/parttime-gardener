@@ -18,8 +18,10 @@ class ViewVeg extends React.Component {
             <div className="month-info">
               <h4>Harvest in</h4>
               <p>{veg.harvest}</p>
+              <br/>
               <h4>Tips</h4>
               <p>{veg.tips}</p>
+              <br/>
             </div>
           </div>
         </div>

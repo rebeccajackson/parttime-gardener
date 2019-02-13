@@ -11,6 +11,8 @@ import { getUserVeges } from '../api/vegs';
 import { getMonths } from '../api/months'
 import { getMonthVeges } from '../api/months'
 import { getPlantingMonthsArr } from '../api/months'
+import {addToGarden} from '../api/users'
+
 
 
 class Table extends React.Component{
@@ -23,7 +25,8 @@ class Table extends React.Component{
       veg: {},
       redirect: undefined,
       setVeg: {},
-      monthsArr: []
+      monthsArr: [],
+      login: this.props.login
     }
     this.getMonths = this.getMonths.bind(this)
   }
@@ -64,6 +67,14 @@ class Table extends React.Component{
     return this.setState({monthsArr: monthsArr})
   }
 
+  addToGarden = (veg) => {
+    const sendData = {user: this.props.user, veg: veg}
+    addToGarden(sendData).then(() => {
+      getUserVeges(this.props.user).then(veges => {
+        return this.setState({userVeges: veges})
+      })
+    })
+  }
 
   setVeg = (veg) => {
     getPlantingMonthsArr(veg)
@@ -125,6 +136,7 @@ class Table extends React.Component{
                 userVeges={this.state.userVeges}
                 month={this.state.month}
                 user={this.props.user}
+                addToGarden={this.addToGarden}
                />
               || this.state.redirect === 'veg' &&
               <ViewVeg
