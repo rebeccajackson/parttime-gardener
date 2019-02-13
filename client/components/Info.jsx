@@ -4,9 +4,12 @@ import {addToGarden} from '../api/users'
 class Info extends React.Component{
 constructor(props){
   super(props)
+  this.state = {
+    user: this.props.user
+  }
 }
   addToGarden = (veg) => {
-    const sendData = (this.props.user, veg)
+    const sendData = {user: this.props.user, veg: veg}
     addToGarden(sendData).then(res => {
       return console.log(res)
     }
@@ -29,7 +32,7 @@ constructor(props){
           <br/>
          
         </div>
-        <button className='button' onClick={this.addToGarden}>
+        <button className='button' onClick={()=>this.addToGarden(veg)}>
           Add to garden
         </button>
       </Fragment>
