@@ -22,7 +22,8 @@ class Table extends React.Component{
       userVeges: [],
       veg: {},
       redirect: undefined,
-      setVeg: {}
+      setVeg: {},
+      monthsArr: []
     }
     this.getMonths = this.getMonths.bind(this)
   }
@@ -36,7 +37,10 @@ class Table extends React.Component{
 
   getMonths(){
     getMonths().then(months => {
-      this.setState({months: months})
+      this.setState({
+        months: months,
+        monthsArr: months
+      })
     })
   }
 
@@ -52,21 +56,12 @@ class Table extends React.Component{
   }
   mapToArr = (res)=>{
     let monthsArr = []
-    
-    for(var i=1; i <= 12; i++){
-      console.log(i)
-      res.map(month =>{
-        console.log(month.id)
-        if(month.id == i){
-          monthsArr.push({show: 'true'})
-        } else {
-          monthsArr.push({show: 'false'})
-        }
-      }) 
-      
-      return console.log(monthsArr)
+    for(var i=1; i<13; i++){
+      if(res.find(month => month.id === i)) monthsArr.push({show: true})
+      else monthsArr.push({show: false}) 
     }
- 
+    
+    return this.setState({monthsArr: monthsArr})
   }
 
 
@@ -76,11 +71,10 @@ class Table extends React.Component{
     .then(resArr => {
       this.mapToArr(resArr)
       
-    }).then(monthsArr =>{
+    }).then(() =>{
       this.setState({
       veg: veg,
-      redirect: 'veg',
-      monthsArr: monthsArr
+      redirect: 'veg'
       })
     })  
   }
@@ -88,14 +82,13 @@ class Table extends React.Component{
 
 
   render(){
-  const monthsArr = this.state.months//needs to be an array of 12 true or false
     return(
       <Router>
           <Fragment>
             <div className='table'>
               <div className='header-grid'>
                 <div className='grid12'>
-                  {monthsArr.map((month, i) => 
+                  {this.state.months.map((month, i) => 
                     <button onClick={this.handleClick.bind(this, month)} 
                         className='month-letter heartbeat' key={i}
                         >
@@ -110,9 +103,8 @@ class Table extends React.Component{
     
               <div className='plantingMonths'> 
                 <div className='grid12'>
-                  {monthsArr.map((month, i) => 
+                  {this.state.monthsArr.map((month, i) => 
                     <div key={i} className={`${month.name} plantingMonths-header`}>
-                    
                       <PlantingMonth show={month.show}/>
                     </div>
                   )}

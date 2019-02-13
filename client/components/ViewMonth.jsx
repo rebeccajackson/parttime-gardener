@@ -8,7 +8,6 @@ class ViewMonth extends React.Component {
 
   render(){
     const { month, monthVeges } = this.props
-    console.log(this.props)
     return(
       <Router>
         <Fragment>

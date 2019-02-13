@@ -29,7 +29,6 @@ class Home extends React.Component{
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state.user
-    console.log(user)
     getUserByName(user).then(user => {
       this.setState({ 
         user: user,

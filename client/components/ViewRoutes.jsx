@@ -15,47 +15,37 @@ class ViewRoutes extends React.Component {
     }
   }
 
-  //TODO this.setVeg function here
-      
-
-
   render(){
-     console.log('routespage ', this.props)
+    return(
+      <Fragment>
+        <MyGarden 
+          user={this.props.user}
+          userVeges={this.props.userVeges}
+          month={this.props.month}
+          setVeg={this.setVeg}
+          monthVeges={this.props.monthVeges}
+          veg={this.props.veg}
 
-      return(
-        // <Router>
-           <Fragment>
-            <MyGarden 
+        />
+        <Switch>
+          <Route path='/veg' render={(props) => (
+              <ViewVeg
               user={this.props.user}
               userVeges={this.props.userVeges}
-              month={this.props.month}
               setVeg={this.setVeg}
               monthVeges={this.props.monthVeges}
               veg={this.props.veg}
-
+              />
+            )} />
+        
+          <Route path='/months' render={(props) => (
+            <ViewMonth 
+            setVeg={this.setVeg}
+            monthVeges={this.props.monthVeges}
             />
-            <Switch>
-              <Route path='/veg' render={(props) => (
-                    <ViewVeg
-                    user={this.props.user}
-                    userVeges={this.props.userVeges}
-                    setVeg={this.setVeg}
-                    monthVeges={this.props.monthVeges}
-                    veg={this.props.veg}
-                    />
-                  )} />
-              
-                <Route path='/months' render={(props) => (
-                    <ViewMonth 
-                    setVeg={this.setVeg}
-                    monthVeges={this.props.monthVeges}
-                    />
-                  )} />
-            </Switch>
-          </Fragment>
-        // </Router>
-         
-       
+          )} />
+      </Switch>
+    </Fragment>
     )
   }
 }
