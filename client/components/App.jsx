@@ -39,12 +39,12 @@ class App extends React.Component{
    
       <div id="home">
         {!this.state.login &&  <div className="home-page">
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              Username:
-              <input type="text" value={this.state.user.name} name='name' onChange={this.handleChange} />
+          <form className="form" onSubmit={this.handleSubmit}>
+            <label className="form-label">
+              Username
+              <input className='form-input' type="text" value={this.state.user.name} name='name' onChange={this.handleChange} />
             </label>
-            <input type="submit" value="Login" />
+              <input className="button" type="submit" value="Login" />
           </form>
         </div>}
 

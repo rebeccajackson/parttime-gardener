@@ -27,7 +27,7 @@ class ViewMonth extends React.Component {
       <Router>
         <Fragment>
           <div className="view-container">
-            <h3 className="month-name box-title">{month.name}</h3>
+            <h3 className="month-name scale-in-center box-title">{month.name}</h3>
     
             <div className="month-box box1 ">
               <SeasonInfo month={month} />

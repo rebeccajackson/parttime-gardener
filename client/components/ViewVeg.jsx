@@ -11,15 +11,18 @@ class ViewVeg extends React.Component {
           <h3 className="month-name box-title">{veg.name}</h3>
   
           <div className="month-box box1 ">
+            <img className="icon" src="/images/icons8-field-96.png" alt=""/>
+            <br/>
+            <p>Recommend other veg to plant with {veg.name} here</p>
           </div>
 
           <div className="month-box box3">
             <img className="icon" src="/images/information.png" alt=""/>
             <div className="month-info">
-              <h4>Harvest in</h4>
+              <h3>Harvest in</h3>
               <p>{veg.harvest}</p>
               <br/>
-              <h4>Tips</h4>
+              <h3>Tips</h3>
               <p>{veg.tips}</p>
               <br/>
             </div>

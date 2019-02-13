@@ -100,7 +100,7 @@ class Table extends React.Component{
                 <div className='grid12'>
                   {this.state.months.map((month, i) => 
                     <button onClick={this.handleClick.bind(this, month)} 
-                        className='month-letter heartbeat' key={i}
+                        className='month-letter overlay heartbeat' key={i}
                         >
                       
                         <div className={`${month.season} table-header`}>
