@@ -11,6 +11,13 @@ router.post('/', (req,res)=>{
   })
 })
 
+router.post('/info', (req,res)=>{
+  console.log('routes', req.body)
+  db.addToGarden(req.body.veg, req.body.user)
+  .then(user =>{
+    res.json(user)
+  })
+})
 
 
 

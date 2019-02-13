@@ -2,12 +2,27 @@ import React, {Fragment} from 'react'
 import {HashRouter as Router, Link} from 'react-router-dom'
 
 import SeasonInfo from './SeasonInfo'
+import Info from './Info'
 
 
 class ViewMonth extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      clickedVeg: {},
+      month: this.props.month,
+      monthVeges: this.props.monthVeges
+    }
+  }
+
+  handleClick = (veg)=>{
+    this.setState({
+      clickedVeg: veg
+    })
+  }
 
   render(){
-    const { month, monthVeges } = this.props
+    const { month, monthVeges, user } = this.props
     return(
       <Router>
         <Fragment>
@@ -16,6 +31,7 @@ class ViewMonth extends React.Component {
     
             <div className="month-box box1 ">
               <SeasonInfo month={month} />
+              
             </div>
     
             <div className="month-box box2">
@@ -23,15 +39,16 @@ class ViewMonth extends React.Component {
               <div className="vegList-box">
                 {monthVeges.map((veg, i) => 
                 <span>
-                    <Link className='vegNameList' to={'/info'} key={i}> <p>{veg.name}</p> </Link>
+                    <Link className='vegNameList' to={'/info'} key={i} onClick={this.handleClick.bind(this, veg)}> 
+                      <p>{veg.name}</p> 
+                    </Link>
                 </span> 
                 )}
               </div>
             </div>
 
             <div className="month-box box3">
-              <img className="icon" src="/images/information.png" alt=""/>
-              <p>eg carrots</p>
+              <Info veg={this.state.clickedVeg} user={user}/>
             </div>
     
           </div>

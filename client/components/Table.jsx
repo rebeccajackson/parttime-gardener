@@ -54,16 +54,15 @@ class Table extends React.Component{
       }
     )
   }
+
   mapToArr = (res)=>{
     let monthsArr = []
     for(var i=1; i<13; i++){
       if(res.find(month => month.id === i)) monthsArr.push({show: true})
       else monthsArr.push({show: false}) 
     }
-    
     return this.setState({monthsArr: monthsArr})
   }
-
 
 
   setVeg = (veg) => {
@@ -124,7 +123,9 @@ class Table extends React.Component{
                 <ViewMonth
                 monthVeges={this.state.monthVeges}
                 userVeges={this.state.userVeges}
-                month={this.state.month}/>
+                month={this.state.month}
+                user={this.props.user}
+               />
               || this.state.redirect === 'veg' &&
               <ViewVeg
                 user={this.props.user}

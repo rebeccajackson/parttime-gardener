@@ -8,3 +8,13 @@ export function getUserByName(user){
   })
 }
 
+export function addToGarden(veg, user){
+  console.log('api', veg, user)
+  return request.post('/api/info')
+  .send(veg)
+  .send(user)
+  .then(res => {
+    return res.body
+  })
+}
+

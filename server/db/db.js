@@ -9,7 +9,8 @@ module.exports = {
   getMonthVeges,
   getUserByName,
   getUserVeges,
-  getPlantingMonthsArr
+  getPlantingMonthsArr,
+  addToGarden
 }
 
 function getVeges(){
@@ -46,4 +47,11 @@ function getPlantingMonthsArr(veg){
   .where('veg_months.veg_id', veg.id)
   .join('months', 'months.id', 'veg_months.month_id')
   .select('veg_months.month_id as id')
+}
+
+
+function addToGarden(veg, user){
+  console.log(veg, user)
+  return db('veg_months')
+
 }
