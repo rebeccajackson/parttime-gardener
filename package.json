@@ -12,8 +12,7 @@
     "server": "node server",
     "start": "node server",
     "test": "jest --watchAll",
-    "postinstall": "knex migrate:latest",
-    "win": "webpack --watch"
+    "postinstall": "webpack && knex migrate:latest"  
   },
   "babel": {
     "presets": [
