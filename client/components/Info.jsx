@@ -10,7 +10,14 @@ constructor(props){
 
   render(){
     const {veg} = this.props
-     return (
+    return Object.keys(veg).length == 0 ? (
+      <Fragment>
+        <img className="icon" src="/images/information.png" alt=""/>
+        <div className='info-box'>
+          <h2>Click on a veg</h2>
+        </div>
+      </Fragment>
+    ) :
       <Fragment>
         <img className="icon" src="/images/information.png" alt=""/>
         <div className='info-box'>
@@ -20,15 +27,11 @@ constructor(props){
           <br/>
           <h4>Plant spacing</h4>
           <p>{veg.spaceplants}</p>
-          <br/>
-         
         </div>
         <button className='button' onClick={()=>this.props.addToGarden(veg)}>
           Add to garden
         </button>
       </Fragment>
-    ) 
   }
- 
 }
 export default Info

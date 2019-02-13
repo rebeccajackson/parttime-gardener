@@ -8,10 +8,12 @@
   "license": "ISC",
   "scripts": {
     "client": "webpack-dev-server --hot --inline",
-    "dev": "nodemon server --watch",
+    "dev": "node server --watch",
     "server": "node server --watch",
     "start": "webpack --watch",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "postinstall": "webpack && knex migrate:latest",
+    "win": "nodemon server --watch"
   },
   "babel": {
     "presets": [
@@ -32,24 +34,25 @@
     "express": "^4.16.4",
     "knex": "^0.16.3",
     "nodemon": "^1.18.9",
+    "pg": "^7.8.0",
     "sqlite3": "^4.0.6",
-    "superagent": "^4.0.0-beta.5"
-  },
-  "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "enzyme": "^3.7.0",
-    "enzyme-adapter-react-16": "^1.7.0",
-    "jest": "^23.6.0",
+    "superagent": "^4.0.0-beta.5",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-router-dom": "^4.3.1",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1"
+  },
+  "devDependencies": {
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "jest": "^23.6.0",
     "webpack-dev-server": "^3.1.14"
   }
 }
