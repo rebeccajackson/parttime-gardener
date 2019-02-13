@@ -42,6 +42,7 @@
     "react-router-dom": "^4.3.1",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -52,7 +53,6 @@
   "devDependencies": {
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
-    "jest": "^23.6.0",
-    "webpack-dev-server": "^3.1.14"
+    "jest": "^23.6.0"
   }
 }
