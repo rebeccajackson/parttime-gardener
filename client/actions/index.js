@@ -20,15 +20,9 @@ export const showError = (errorMessage) => {
   }
 }
 
-export function getUserByName(user){
-  return (dispatch) => {
-    return request.post(`/api`, user)
-    .then(res => {
-      dispatch(loginUser(res.body))
-    })
-    .catch(err => {
-      dispatch(showError(err.message))
-    })
+export const userVeges = (user) => {//gets the veges by user
+  return {
+    type: 'USER_VEGES',
+    userVeges: something//incomplete
   }
 }
-

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import Table from './Table'
 
-import { getUserByName } from '../actions/index';
+import { getUserByName } from '../api/users';
 
 class App extends React.Component{
   constructor(props){
@@ -56,10 +56,6 @@ class App extends React.Component{
 function mapStateToProps({ userLogin}) {
   return { userLogin }
 }
-
-// function mapDispatchToProps(dispatch){
-//   return bindActionCreators({getUserByName}, dispatch)
-// }
 
 export default connect(mapStateToProps)(App)
 

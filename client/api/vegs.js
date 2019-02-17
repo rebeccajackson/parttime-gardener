@@ -1,17 +1,24 @@
 import request from 'superagent'
 
-export function getVeges(){
-  return request.get('/api')
-  .then(res => {
-    return res.body
-  })
-}
+import {userVeges} from '../actions/index'
+import {showError} from '../actions/index'
+
+// export function getVeges(){
+//   return request.get('/api')
+//   .then(res => {
+//     return res.body
+//   })
+// }
 
 
 export function getUserVeges(user){
-  return request.post('/api/veg')
-  .send(user)
-  .then(res => {
-    return res.body
-  })
+  return (dispatch) =>{
+    return request.post('/api/veg', user)
+    .then(res => {
+      dispatch(userVeges(res.body))
+    })
+    .catch(err => {
+      dispatch(showError(err.message))
+    })
+  }
 }
