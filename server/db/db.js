@@ -33,7 +33,7 @@ function getMonthVeges(monthId){
 function getUserByName(name){
   return db('users')
   .where('name', name)
-  .select()
+  .select().first()
 }
  
 function getUserVeges(id){

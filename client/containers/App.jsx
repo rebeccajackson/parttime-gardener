@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 
 import Table from './Table'
 
@@ -10,9 +9,7 @@ class App extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      user: {},
-      login: false,
-      userVeges: []
+      user: {}
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -28,18 +25,16 @@ class App extends React.Component{
 
   handleSubmit(e) {
     e.preventDefault();
+    const {dispatch} = this.props
     const user = this.state.user
-    this.props.getUserByName(user)
-      // this.setState({ 
-      //   login: !this.state.login
-      // })
-    
+    dispatch(getUserByName(user))
   }
   render(){
+    console.log('App: ', this.props)
     return(
    
       <div id="home">
-        {!this.state.login &&  <div className="home-page">
+        {!this.props.userLogin.login &&  <div className="home-page">
           <form className="form" onSubmit={this.handleSubmit}>
             <label className="form-label">
               Username
@@ -49,7 +44,7 @@ class App extends React.Component{
           </form>
         </div>}
 
-        {this.state.login && 
+        {this.props.userLogin.login && 
           <Table />
         }        
       </div>
@@ -58,13 +53,13 @@ class App extends React.Component{
   }
 }
 
-function mapStateToProps({ login, user }) {
-  return { login, user }
+function mapStateToProps({ userLogin}) {
+  return { userLogin }
 }
 
-function mapDispatchToProps(dispatch){
-  return bindActionCreators({getUserByName}, dispatch)
-}
+// function mapDispatchToProps(dispatch){
+//   return bindActionCreators({getUserByName}, dispatch)
+// }
 
 export default connect(mapStateToProps)(App)
 
