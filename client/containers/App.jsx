@@ -1,8 +1,10 @@
-import React, {Fragment} from 'react'
+import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 import Table from './Table'
 
-import { getUserByName } from '../api/users';
+import { getUserByName } from '../actions/index';
 
 class App extends React.Component{
   constructor(props){
@@ -27,12 +29,11 @@ class App extends React.Component{
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state.user
-    getUserByName(user).then(user => {
-      this.setState({ 
-        user: user,
-        login: !this.state.login
-      })
-    });
+    this.props.getUserByName(user)
+      // this.setState({ 
+      //   login: !this.state.login
+      // })
+    
   }
   render(){
     return(
@@ -48,18 +49,22 @@ class App extends React.Component{
           </form>
         </div>}
 
-        {/* {this.state.login && 
-          <Table 
-          user={this.state.user}
-          login={this.state.login}
-          />
-        }         */}
+        {this.state.login && 
+          <Table />
+        }        
       </div>
     
     )
   }
 }
 
+function mapStateToProps({ login, user }) {
+  return { login, user }
+}
 
-export default App
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({getUserByName}, dispatch)
+}
+
+export default connect(mapStateToProps)(App)
 
