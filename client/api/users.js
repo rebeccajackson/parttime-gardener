@@ -1,18 +1,25 @@
 import request from 'superagent'
 
-export function getUserByName(user){
-  return request.post('/api')
-  .send(user)
-  .then(res => {
-    return res.body
-  })
-}
+// import loginUser from '../actions/index'
+// import showError from '../actions/index'
 
-export function addToGarden(data){
-  return request.post('/api/info')
-  .send(data)
-  .then(res => {
-    return res.body
-  })
-}
+// export function getUserByName(user){
+//   return (dispatch) => {
+//     return request.post(`/api`, user)
+//     .then(res => {
+//       dispatch(loginUser(res.body))
+//     })
+//     .catch(err => {
+//       dispatch(showError(err.message))
+//     })
+//   }
+// }
+
+// export function addToGarden(data){
+//   return request.post('/api/info')
+//   .send(data)
+//   .then(res => {
+//     return res.body
+//   })
+// }
 

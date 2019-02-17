@@ -1,7 +1,6 @@
 //actions - index.js
 
 import request from 'superagent'
-// import axios from 'axios'
 
 const LOGIN_USER = 'LOGIN_USER'
 const SHOW_ERROR = 'SHOW_ERROR'

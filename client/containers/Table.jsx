@@ -28,12 +28,12 @@ class Table extends React.Component{
       monthsArr: [],
       login: this.props.login
     }
-    this.getMonths = this.getMonths.bind(this)
+    // this.getMonths = this.getMonths.bind(this)
   }
 
   // componentDidMount(){
-  //   this.getMonths()
-  //   getUserVeges(this.props.user).then(veges => {
+  //   // this.getMonths()
+  //   getUserVeges(this.props.loginUser.user).then(veges => {
   //     this.setState({userVeges: veges})
   //   })
   // }
