@@ -1,3 +1,5 @@
+//reducers - index
+
 import { combineReducers } from 'redux';
 import userLogin from './users'
 

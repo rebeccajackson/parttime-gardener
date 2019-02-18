@@ -65,3 +65,6 @@ bundle.*
 
 # Development databases
 dev.sqlite3
+
+# JWT environment
+.env

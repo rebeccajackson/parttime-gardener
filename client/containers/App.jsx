@@ -1,9 +1,12 @@
-import React from 'react'
+import React, {Fragment} from 'react'
+import {HashRouter as Router, Link} from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import Table from './Table'
+import Register from './Register'
 
-import { getUserByName } from '../api/users';
+import { login } from '../api/users';
+
 
 class App extends React.Component{
   constructor(props){
@@ -12,7 +15,7 @@ class App extends React.Component{
       user: {}
     }
     this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleLogin = this.handleLogin.bind(this)
   } 
 
   
@@ -21,34 +24,38 @@ class App extends React.Component{
     user[e.target.name] = e.target.value
     this.setState({ user })
   }
-  
 
-  handleSubmit(e) {
+  handleLogin(e) {
     e.preventDefault();
     const {dispatch} = this.props
     const user = this.state.user
-    dispatch(getUserByName(user))
+    dispatch(login(user))
   }
-  render(){
-    console.log('App: ', this.props)
-    return(
-   
-      <div id="home">
-        {!this.props.userLogin.login &&  <div className="home-page">
-          <form className="form" onSubmit={this.handleSubmit}>
-            <label className="form-label">
-              Username
-              <input className='form-input' type="text" value={this.state.user.name} name='name' onChange={this.handleChange} />
-            </label>
-              <input className="button" type="submit" value="Login" />
-          </form>
-        </div>}
 
-        {this.props.userLogin.login && 
-          <Table />
-        }        
-      </div>
-    
+  render(){
+    return(
+      <Router>
+        <Fragment>
+          <div id="home">
+            <div className="home-page">
+              <form className="form" onSubmit={this.handleLogin}>
+              
+                  <input className='form-input' type="text" name='username'  onChange={this.handleChange} />
+                  <input className='form-input' type="password" name='password' onChange={this.handleChange} />
+            
+                  <input className="button" type="submit" value="Login" />
+              </form>
+              <div>
+                <Link to='/register'>Signup</Link>
+              </div>
+            </div>
+            {this.props.userLogin.login && 
+              <Table />
+            }        
+          </div>
+        </Fragment>
+      </Router>
+
     )
   }
 }

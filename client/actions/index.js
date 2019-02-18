@@ -1,7 +1,5 @@
 //actions - index.js
 
-import request from 'superagent'
-
 const LOGIN_USER = 'LOGIN_USER'
 const SHOW_ERROR = 'SHOW_ERROR'
 
@@ -20,9 +18,9 @@ export const showError = (errorMessage) => {
   }
 }
 
-export const userVeges = (user) => {//gets the veges by user
-  return {
-    type: 'USER_VEGES',
-    userVeges: something//incomplete
-  }
-}
+// export const userVeges = (user) => {//gets the veges by user
+//   return {
+//     type: 'USER_VEGES',
+//     userVeges: something//incomplete
+//   }
+// }

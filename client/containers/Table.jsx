@@ -7,7 +7,7 @@ import {HashRouter as Router, Route} from 'react-router-dom'
 // import ViewVeg from './ViewVeg';
 // import MyGarden from './MyGarden';
 
-import { getUserVeges } from '../api/vegs';
+// import { getUserVeges } from '../api/vegs';
 // import { getMonths } from '../api/months'
 // import { getMonthVeges } from '../api/months'
 // import { getPlantingMonthsArr } from '../api/months'
