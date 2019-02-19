@@ -12,14 +12,12 @@ router.use(userError)
 
 router.post('/register', register, token.issue)
 
-router.get('/user',
-  verifyJwt({ secret: process.env.GARDEN_ENV }),
-  user
-)
 
 function register (req, res, next) {
+  router.use(
+    verifyJwt({ secret: process.env.GARDEN_ENV })
+  )
   const {username, password} = req.body
-  console.log(username)
   db.createUser({username, password})
   .then(([id]) => {
     res.locals.userId = id
@@ -39,26 +37,21 @@ function register (req, res, next) {
   })
 }
 
-function user (req, res) {
-  //go to db first and get user by username then check token
-  console.log(req.body)
+router.post('/login', login) 
+
+function login (req, res) {
   const {username} = req.body
   db.getUserIdByName(username)
-  .then(userId => {
-    console.log(userId)
-      db.getUser(userId)
-    .then(({ username, id }) =>
-      res.json({
-        ok: true,
-        username,
-        id
-      }))
-    .catch(e =>
-      res.status(500).json({
-        ok: false,
-        message: 'An error ocurred while retrieving your user profile.'
-      }))
+  .then(user => {
+    res.locals.userId = user.id
+    token.issue(req,res)
   })
+  .catch(e =>
+    res.status(500).json({
+      ok: false,
+      message: 'An error ocurred while retrieving your user profile.'
+    })
+  )
 }
 
 function userError (err, req, res, next) {

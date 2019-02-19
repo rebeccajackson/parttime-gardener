@@ -1,10 +1,10 @@
 //reducers - index
 
 import { combineReducers } from 'redux';
-import userLogin from './users'
+import user from './users'
 
 const rootReducer = combineReducers({
-  userLogin
+  user
 });
 // state: (state = {}) => state
 // default to write so you don't get errors before you have some reducers

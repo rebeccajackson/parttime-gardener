@@ -1,19 +1,15 @@
 //reducers - users.js
-const initialState = {login: false}
+const initialState = {}
 
-import { LOGIN_USER } from "../actions";
 
-function userLogin(state = initialState, action){
+function user(state = initialState, action){
   switch (action.type){
-    case 'LOGIN_USER':
-      return {
-        ...state,
-        user: action.user,
-        login: action.login
-      }
+    case 'LOGIN_SUCCESS':
+      return action.user
+    
       default:
         return state
   }
 }
 
-export default userLogin
+export default user

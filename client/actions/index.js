@@ -1,19 +1,16 @@
 //actions - index.js
 
-const LOGIN_USER = 'LOGIN_USER'
-const SHOW_ERROR = 'SHOW_ERROR'
 
-export const loginUser = (user) => {
+export function receiveLogin(user) {
   return {
-    type: 'LOGIN_USER',
-    user: user,
-    login:true
-  }
+    type: 'LOGIN_SUCCESS',
+    user
+  };
 }
 
 export const showError = (errorMessage) => {
   return {
-    type: SHOW_ERROR,
+    type: 'SHOW_ERROR',
     errorMessage: errorMessage
   }
 }

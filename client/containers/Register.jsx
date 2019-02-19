@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 
-import { signup } from '../api/users';
+import { connect } from 'react-redux'
+import { registerUser } from '../actions/auth/register'
 
-export default class Register extends Component {
+class Register extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -23,8 +24,8 @@ export default class Register extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const {dispatch} = this.props
-    const register = this.state.user
-    dispatch(signup(register))
+    const creds = this.state.user
+    dispatch(registerUser(creds))
   }
   render() {
     return (
@@ -40,3 +41,7 @@ export default class Register extends Component {
     )
   }
 }
+
+
+
+export default connect()(Register)
