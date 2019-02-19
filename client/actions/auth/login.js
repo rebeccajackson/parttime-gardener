@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-import { saveUserToken } from './authUtilities/auth';
+import { saveUserToken } from './authUtilities/auth'
 import { showError } from '../../actions/index'
 import { receiveLogin } from '../../actions/index'
 

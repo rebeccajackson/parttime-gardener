@@ -1,10 +1,25 @@
 //actions - index.js
 
-
 export function receiveLogin(user) {
   return {
     type: 'LOGIN_SUCCESS',
     user
+  };
+}
+
+export function loadMonths(months) {
+  console.log(months)
+  return {
+    type: 'LOAD_MONTHS',
+    months
+  };
+}
+
+export function loadMonthVeges(monthVeges) {
+  console.log(monthVeges)
+  return {
+    type: 'LOAD_MONTH_VEGES',
+    monthVeges
   };
 }
 
@@ -15,9 +30,12 @@ export const showError = (errorMessage) => {
   }
 }
 
-// export const userVeges = (user) => {//gets the veges by user
-//   return {
-//     type: 'USER_VEGES',
-//     userVeges: something//incomplete
-//   }
-// }
+export const redirect = (month) => {
+  console.log('redirecting to: ', month)
+  return {
+    type: 'REDIRECT',
+    month
+  }
+}
+
+

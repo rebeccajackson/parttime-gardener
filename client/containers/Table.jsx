@@ -1,62 +1,41 @@
 import React, {Fragment} from 'react'
-import {HashRouter as Router, Route} from 'react-router-dom'
+import {HashRouter as Router} from 'react-router-dom'
+import { connect } from 'react-redux'
 
 
 // import PlantingMonth from './PlantingMonth';
-// import ViewMonth from './ViewMonth';
-// import ViewVeg from './ViewVeg';
-// import MyGarden from './MyGarden';
+import ViewMonth from '../containers/ViewMonth'
+import ViewVeg from '../containers/ViewVeg'
+import MyGarden from '../containers/MyGarden'
 
 // import { getUserVeges } from '../api/vegs';
-// import { getMonths } from '../api/months'
-// import { getMonthVeges } from '../api/months'
+import { getMonths } from '../api/months'
+import { getMonthVeges } from '../api/months'
 // import { getPlantingMonthsArr } from '../api/months'
 // import {addToGarden} from '../api/users'
-
-
 
 class Table extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      months: [],
-      month: {},
-      userVeges: [],
       veg: {},
-      redirect: undefined,
       setVeg: {},
       monthsArr: [],
-      login: this.props.login
     }
-    // this.getMonths = this.getMonths.bind(this)
   }
 
-  // componentDidMount(){
-  //   // this.getMonths()
-  //   getUserVeges(this.props.loginUser.user).then(veges => {
-  //     this.setState({userVeges: veges})
-  //   })
-  // }
+  componentDidMount(){
+    const { dispatch } = this.props
+    dispatch(getMonths())
+    // getUserVeges(this.props.loginUser.user).then(veges => {
+    //   this.setState({userVeges: veges})
+    // })
+  }
 
-  // getMonths(){
-  //   getMonths().then(months => {
-  //     this.setState({
-  //       months: months,
-  //       monthsArr: months
-  //     })
-  //   })
-  // }
-
-  // handleClick = (month) => {
-  //   getMonthVeges(month).then(monthVeges => {
-  //       this.setState({
-  //       monthVeges: monthVeges,
-  //       month: month,
-  //       redirect: 'month'
-  //       })
-  //     }
-  //   )
-  // }
+  handleClick = (month) => {
+    const { dispatch } = this.props
+    dispatch(getMonthVeges(month))
+  }
 
   // mapToArr = (res)=>{
   //   let monthsArr = []
@@ -92,13 +71,14 @@ class Table extends React.Component{
 
 
   render(){
+    const { months } = this.props
     return(
       <Router>
           <Fragment>
             <div className='table'>
               <div className='header-grid'>
                 <div className='grid12'>
-                  {/* {this.state.months.map((month, i) => 
+                  {months.map((month, i) => 
                     <button onClick={this.handleClick.bind(this, month)} 
                         className='month-letter overlay heartbeat' key={i}
                         >
@@ -107,7 +87,7 @@ class Table extends React.Component{
                           {month.name.charAt(0)}
                         </div>
                     </button> 
-                  )} */}
+                  )}
                 </div>  
               </div>
     
@@ -121,36 +101,22 @@ class Table extends React.Component{
               </div> 
             </div>
           </div>
-          {/* <div className='contents'>
-            <MyGarden 
-              user={this.props.user}
-              userVeges={this.state.userVeges}
-              month={this.state.month}
-              setVeg={this.setVeg}
-              monthVeges={this.state.monthVeges}
-              veg={this.state.veg}
-            />
-            {this.state.redirect === 'month' &&
-                <ViewMonth
-                monthVeges={this.state.monthVeges}
-                userVeges={this.state.userVeges}
-                month={this.state.month}
-                user={this.props.user}
-                addToGarden={this.addToGarden}
-               />
+           <div className='contents'>
+            <MyGarden />
+           {this.state.redirect === 'month' &&
+                <ViewMonth />
               || this.state.redirect === 'veg' &&
-              <ViewVeg
-                user={this.props.user}
-                userVeges={this.state.userVeges}
-                setVeg={this.setVeg}
-                veg={this.state.veg}
-                />
+              <ViewVeg />
               }
-          </div> */}
+          </div>
         </Fragment>
       </Router>
     )
   }
 }
 
-export default Table
+function mapStateToProps({ user, months}) {
+  return { user, months }
+}
+
+export default connect(mapStateToProps)(Table)
