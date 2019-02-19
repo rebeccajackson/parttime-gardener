@@ -3,21 +3,30 @@ import {Link} from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import SeasonInfo from '../components/SeasonInfo'
-import Info from '../components/Info'
+import Info from './Info'
 
+import {setVeg} from '../actions/index'
+import {getPlantingMonthsArr} from '../api/vegs'
 
 class ViewMonth extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      clickedVeg: {}
-    }
-  }
+
+  // setVeg = (veg) => {
+  //   getPlantingMonthsArr(veg)
+  //   .then(resArr => {
+  //     this.mapToArr(resArr)
+      
+  //   }).then(() =>{
+  //     this.setState({
+  //     veg: veg,
+  //     redirect: 'veg'
+  //     })
+  //   })  
+  // }
 
   handleClick = (veg)=>{
-    this.setState({
-      clickedVeg: veg
-    })
+   const {dispatch} = this.props
+   dispatch(setVeg(veg))
+  //  dispatch(getPlantingMonthsArr(veg))
   }
 
   render(){
@@ -27,7 +36,7 @@ class ViewMonth extends React.Component {
           <h3 className="month-name scale-in-center box-title">{month.name}</h3>
   
           <div className="month-box box1 ">
-            <SeasonInfo month={month} />
+            {/* <SeasonInfo month={month} /> */}
             
           </div>
   
@@ -45,7 +54,7 @@ class ViewMonth extends React.Component {
           </div>
 
           <div className="month-box box3">
-            {/* <Info veg={this.state.clickedVeg} user={user} addToGarden={this.props.addToGarden}/> */}
+            <Info />
           </div>
   
         </div>
@@ -54,8 +63,8 @@ class ViewMonth extends React.Component {
   }
 }
 
-function mapStateToProps({ monthVeges }) {
-  return { monthVeges }
+function mapStateToProps({ monthVeges, month }) {
+  return { monthVeges, month }
 }
 
 export default connect(mapStateToProps)(ViewMonth)

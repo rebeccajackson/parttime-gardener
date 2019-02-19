@@ -22,4 +22,13 @@ export function monthVeges(state = initialState, action){
   }
 }
 
+export function month(state = initialState, action){
+  switch (action.type){
+    case 'LOAD_MONTH':
+      return action.month
+    
+    default:
+      return state
+  }
+}
 

@@ -30,11 +30,27 @@ export const showError = (errorMessage) => {
   }
 }
 
-export const redirect = (month) => {
+export const loadMonth = (month) => {
   console.log('redirecting to: ', month)
   return {
-    type: 'REDIRECT',
+    type: 'LOAD_MONTH',
     month
+  }
+}
+
+export const loadUserVeges = (userVeges) => {
+  console.log('user veges are ', userVeges)
+  return {
+    type: 'LOAD_USER_VEGES',
+    userVeges
+  }
+}
+
+export const setVeg = (monthClickedVeg) => {
+  console.log('user veges are ', monthClickedVeg)
+  return {
+    type: 'SET_VEG',
+    monthClickedVeg
   }
 }
 

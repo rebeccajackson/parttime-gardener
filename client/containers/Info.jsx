@@ -1,16 +1,12 @@
 import React, {Fragment} from 'react'
+import {connect} from 'react-redux'
 
 class Info extends React.Component{
-constructor(props){
-  super(props)
-  this.state = {
-    user: this.props.user
-  }
-}
+
 
   render(){
-    const {veg} = this.props
-    return Object.keys(veg).length == 0 ? (
+    const {monthClickedVeg} = this.props
+    return Object.keys(monthClickedVeg).length == 0 ? (
       <Fragment>
         <img className="icon" src="/images/information.png" alt=""/>
         <div className='info-box'>
@@ -23,18 +19,22 @@ constructor(props){
         <img className="icon" src="/images/information.png" alt=""/>
         <div className='info-box'>
           <br/>
-          <h2>{veg.name}</h2>
+          <h2>{monthClickedVeg.name}</h2>
           <br/>
           <h4>Tips</h4>
-          <p>{veg.tips}</p>
+          <p>{monthClickedVeg.tips}</p>
           <br/>
           <h4>Plant spacing</h4>
-          <p>{veg.spaceplants}</p>
-          <button className='button' onClick={()=>this.props.addToGarden(veg)}>
+          <p>{monthClickedVeg.spaceplants}</p>
+          <button className='button' onClick={()=>this.props.addToGarden(monthClickedVeg)}>
             Add to garden
           </button>
         </div>
       </Fragment>
   }
 }
-export default Info
+function mapStateToProps({monthClickedVeg}){
+  return {monthClickedVeg}
+}
+
+export default connect(mapStateToProps)(Info)

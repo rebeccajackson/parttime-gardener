@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-import {userVeges} from '../actions/index'
+import {loadUserVeges} from '../actions/index'
 import {showError} from '../actions/index'
 
 // export function getVeges(){
@@ -11,14 +11,14 @@ import {showError} from '../actions/index'
 // }
 
 
-// export function getUserVeges(user){
-//   return (dispatch) =>{
-//     return request.post('/api/veg', user)
-//     .then(res => {
-//       dispatch(userVeges(res.body))
-//     })
-//     .catch(err => {
-//       dispatch(showError(err.message))
-//     })
-//   }
-// }
+export function getUserVeges(user){
+  return (dispatch) =>{
+    return request.post('/api/veg', user)
+    .then(res => {
+      dispatch(loadUserVeges(res.body))
+    })
+    .catch(err => {
+      dispatch(showError(err.message))
+    })
+  }
+}

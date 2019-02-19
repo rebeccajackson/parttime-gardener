@@ -2,7 +2,7 @@
 import request from 'superagent'
 
 import { loadMonths } from '../actions/index'
-import { redirect } from '../actions/index'
+import { loadMonth } from '../actions/index'
 import { loadMonthVeges } from '../actions/index'
 import { showError } from '../actions/index'
 
@@ -25,7 +25,7 @@ export function getMonthVeges(month){
     .then(res => {
       const monthVeges = res.body
       dispatch(loadMonthVeges(monthVeges))
-      dispatch(redirect(month))
+      dispatch(loadMonth(month))
     })
     .catch(err => {
       dispatch(showError(err.message))

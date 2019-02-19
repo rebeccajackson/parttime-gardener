@@ -8,7 +8,6 @@ import ViewMonth from '../containers/ViewMonth'
 import ViewVeg from '../containers/ViewVeg'
 import MyGarden from '../containers/MyGarden'
 
-// import { getUserVeges } from '../api/vegs';
 import { getMonths } from '../api/months'
 import { getMonthVeges } from '../api/months'
 // import { getPlantingMonthsArr } from '../api/months'
@@ -27,9 +26,6 @@ class Table extends React.Component{
   componentDidMount(){
     const { dispatch } = this.props
     dispatch(getMonths())
-    // getUserVeges(this.props.loginUser.user).then(veges => {
-    //   this.setState({userVeges: veges})
-    // })
   }
 
   handleClick = (month) => {
@@ -54,21 +50,6 @@ class Table extends React.Component{
   //     })
   //   })
   // }
-
-  // setVeg = (veg) => {
-  //   getPlantingMonthsArr(veg)
-  //   .then(resArr => {
-  //     this.mapToArr(resArr)
-      
-  //   }).then(() =>{
-  //     this.setState({
-  //     veg: veg,
-  //     redirect: 'veg'
-  //     })
-  //   })  
-  // }
-    
-
 
   render(){
     const { months } = this.props
@@ -103,10 +84,8 @@ class Table extends React.Component{
           </div>
            <div className='contents'>
             <MyGarden />
-           {this.state.redirect === 'month' &&
-                <ViewMonth />
-              || this.state.redirect === 'veg' &&
-              <ViewVeg />
+           {this.props.month && <ViewMonth />
+              || this.props.veg && <ViewVeg />
               }
           </div>
         </Fragment>
@@ -115,8 +94,8 @@ class Table extends React.Component{
   }
 }
 
-function mapStateToProps({ user, months}) {
-  return { user, months }
+function mapStateToProps({ user, months, month }) {
+  return { user, months, month }
 }
 
 export default connect(mapStateToProps)(Table)
