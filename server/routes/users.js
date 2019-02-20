@@ -7,7 +7,7 @@ const db = require('../db/db')
 router.use(express.json())
 
 router.post('/info', (req,res)=>{
-  db.addToGarden(req.body.veg, req.body.user[0])
+  db.addToGarden(req.body.veg, req.body.user)
   .then(veg =>{
     res.json(veg)
   })

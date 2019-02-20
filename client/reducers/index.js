@@ -6,7 +6,7 @@ import {months} from './months'
 import {monthVeges} from './months'
 import {month} from './months'
 import {userVeges} from './veges'
-import {monthClickedVeg} from './veges'
+import {currentVeg} from './veges'
 
 
 const rootReducer = combineReducers({
@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
   monthVeges,
   month,
   userVeges,
-  monthClickedVeg
+  currentVeg
 });
 
 export default rootReducer;

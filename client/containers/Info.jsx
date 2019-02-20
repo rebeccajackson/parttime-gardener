@@ -1,17 +1,26 @@
 import React, {Fragment} from 'react'
 import {connect} from 'react-redux'
 
+import {addToGarden} from '../api/users'
+
 class Info extends React.Component{
+
+  addToGarden = () => {
+    const payload = {user: this.props.user, veg: this.props.currentVeg}
+    const {dispatch} = this.props
+    dispatch(addToGarden(payload))
+  }
 
 
   render(){
-    const {monthClickedVeg} = this.props
-    return Object.keys(monthClickedVeg).length == 0 ? (
+    const {currentVeg} = this.props
+    
+    return Object.keys(currentVeg).length == 0 ? (
       <Fragment>
         <img className="icon" src="/images/information.png" alt=""/>
         <div className='info-box'>
         <br/>
-        <h2>Click on a veg</h2>
+        <h3>Click on a veg</h3>
         </div>
       </Fragment>
     ) :
@@ -19,22 +28,22 @@ class Info extends React.Component{
         <img className="icon" src="/images/information.png" alt=""/>
         <div className='info-box'>
           <br/>
-          <h2>{monthClickedVeg.name}</h2>
+          <h2>{currentVeg.name}</h2>
           <br/>
           <h4>Tips</h4>
-          <p>{monthClickedVeg.tips}</p>
+          <p>{currentVeg.tips}</p>
           <br/>
           <h4>Plant spacing</h4>
-          <p>{monthClickedVeg.spaceplants}</p>
-          <button className='button' onClick={()=>this.props.addToGarden(monthClickedVeg)}>
+          <p>{currentVeg.spaceplants}</p>
+          <button className='button' onClick={this.addToGarden}>
             Add to garden
           </button>
         </div>
       </Fragment>
   }
 }
-function mapStateToProps({monthClickedVeg}){
-  return {monthClickedVeg}
+function mapStateToProps({user, currentVeg}){
+  return {user, currentVeg}
 }
 
 export default connect(mapStateToProps)(Info)

@@ -42,15 +42,6 @@ class Table extends React.Component{
   //   return this.setState({monthsArr: monthsArr})
   // }
 
-  // addToGarden = (veg) => {
-  //   const sendData = {user: this.props.user, veg: veg}
-  //   addToGarden(sendData).then(() => {
-  //     getUserVeges(this.props.user).then(veges => {
-  //       return this.setState({userVeges: veges})
-  //     })
-  //   })
-  // }
-
   render(){
     const { months } = this.props
     return(

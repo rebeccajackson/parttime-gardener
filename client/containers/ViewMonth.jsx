@@ -10,19 +10,6 @@ import {getPlantingMonthsArr} from '../api/vegs'
 
 class ViewMonth extends React.Component {
 
-  // setVeg = (veg) => {
-  //   getPlantingMonthsArr(veg)
-  //   .then(resArr => {
-  //     this.mapToArr(resArr)
-      
-  //   }).then(() =>{
-  //     this.setState({
-  //     veg: veg,
-  //     redirect: 'veg'
-  //     })
-  //   })  
-  // }
-
   handleClick = (veg)=>{
    const {dispatch} = this.props
    dispatch(setVeg(veg))

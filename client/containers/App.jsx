@@ -7,8 +7,7 @@ import { loginUser } from '../actions/auth/login';
 import Table from './Table'
 import Register from './Register';
 
-
-class App extends React.Component{
+export class App extends React.Component{
   constructor(props){
     super(props)
     this.state = {
@@ -26,14 +25,13 @@ class App extends React.Component{
   }
 
   handleLogin(e) {
-    e.preventDefault();
+    e.preventDefault()
     const {dispatch} = this.props
     const creds = this.state.user
     dispatch(loginUser(creds))
   }
 
   render(){
-    console.log(this.props)
     return(
       <Router>
         <Fragment>

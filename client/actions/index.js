@@ -8,7 +8,6 @@ export function receiveLogin(user) {
 }
 
 export function loadMonths(months) {
-  console.log(months)
   return {
     type: 'LOAD_MONTHS',
     months
@@ -16,7 +15,6 @@ export function loadMonths(months) {
 }
 
 export function loadMonthVeges(monthVeges) {
-  console.log(monthVeges)
   return {
     type: 'LOAD_MONTH_VEGES',
     monthVeges
@@ -31,7 +29,6 @@ export const showError = (errorMessage) => {
 }
 
 export const loadMonth = (month) => {
-  console.log('redirecting to: ', month)
   return {
     type: 'LOAD_MONTH',
     month
@@ -39,18 +36,22 @@ export const loadMonth = (month) => {
 }
 
 export const loadUserVeges = (userVeges) => {
-  console.log('user veges are ', userVeges)
   return {
     type: 'LOAD_USER_VEGES',
     userVeges
   }
 }
 
-export const setVeg = (monthClickedVeg) => {
-  console.log('user veges are ', monthClickedVeg)
+export const setVeg = (currentVeg) => {
   return {
     type: 'SET_VEG',
-    monthClickedVeg
+    currentVeg
+  }
+}
+
+export const addedVegtoGarden = () => {
+  return {
+    type: 'ADDED_VEG'
   }
 }
 

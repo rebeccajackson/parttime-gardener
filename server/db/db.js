@@ -1,13 +1,11 @@
 const connection = require('./connection')
 const {generateHash} = require('../auth/hash')
 
-
 module.exports = {
   createUser,
   getVeges,
   getMonths,
   getMonthVeges,
-  getUser,
   getUserIdByName,
   getUserVeges,
   getPlantingMonthsArr,
@@ -27,12 +25,6 @@ function getUserIdByName(username, db = connection){
   .select().first()
 }
 
-function getUser(id, db = connection){
-  return db('users')
-  .where('users.id', id)
-  .select().first()
-}
-
 function getVeges(db = connection){
   return db('veg').select().orderBy('name')
 }
@@ -41,14 +33,12 @@ function getMonths(db = connection){
   return db('months').select()
 }
 
-
 function getMonthVeges(monthId, db = connection){
   return db('veg_months')
   .where('veg_months.month_id', monthId)
   .join('veg', 'veg.id', 'veg_months.veg_id')
   .select().orderBy('name')
 }
-
  
 function getUserVeges(id, db = connection){
   return db('veg')
@@ -64,9 +54,13 @@ function getPlantingMonthsArr(veg, db = connection){
   .select('veg_months.month_id as id')
 }
 
-
 function addToGarden(veg, user, db = connection){
   return db('garden')
-  .insert({veg_id: veg.id, user_id: user.id})
-
+  .where('user_id', user.id)
+  .where('veg_id', veg.id).then((rows)=>{
+    if (rows.length===0) {
+      return db('garden').insert({veg_id: veg.id, user_id: user.id})
+    }
+  }).catch(err => {
+  })
 }

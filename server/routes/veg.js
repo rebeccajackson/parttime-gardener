@@ -12,7 +12,7 @@ router.get('/', (req,res)=>{
 })
 
 router.post('/veg', (req,res)=> {
-  db.getUserVeges(req.body[0].id)
+  db.getUserVeges(req.body.id)
   .then(veges =>{
     res.json(veges)
   })
