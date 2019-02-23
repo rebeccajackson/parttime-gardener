@@ -62,5 +62,6 @@ function addToGarden(veg, user, db = connection){
       return db('garden').insert({veg_id: veg.id, user_id: user.id})
     }
   }).catch(err => {
+    console.log(err)
   })
 }

@@ -23,7 +23,7 @@ class MyGarden extends React.Component{
             {userVeges.map((obj, i) => 
 
             <Link className='vegNameList' key={i} 
-              // onClick={this.props.setVeg.bind(this, obj)}
+              onClick={this.props.handleVegClick.bind(this, obj)}
               to={ `/veg/${obj.name}`}>
               {obj.name}
             </Link>

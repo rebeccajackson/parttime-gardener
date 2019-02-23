@@ -49,10 +49,9 @@ export const setVeg = (currentVeg) => {
   }
 }
 
-export const addedVegtoGarden = () => {
+export const displayViewVeg = (currentVeg) => {
   return {
-    type: 'ADDED_VEG'
+    type: 'DISPLAY_VIEW_VEG',
+    currentVeg
   }
 }
-
-

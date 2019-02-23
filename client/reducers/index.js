@@ -8,14 +8,14 @@ import {month} from './months'
 import {userVeges} from './veges'
 import {currentVeg} from './veges'
 
-
 const rootReducer = combineReducers({
   user,
   months,
   monthVeges,
   month,
   userVeges,
-  currentVeg
+  currentVeg,
+  showAddVegBtn
 });
 
 export default rootReducer;

@@ -4,6 +4,11 @@ import {connect} from 'react-redux'
 import {addToGarden} from '../api/users'
 
 class Info extends React.Component{
+  constructor(props){
+    super(props)
+    
+    this.showAddVegBtn = this.showAddVegBtn.bind(this)
+  }
 
   addToGarden = () => {
     const payload = {user: this.props.user, veg: this.props.currentVeg}
@@ -11,10 +16,16 @@ class Info extends React.Component{
     dispatch(addToGarden(payload))
   }
 
+  showAddVegBtn = () =>{
+    const {currentVeg, userVeges} = this.props
+    if (typeof userVeges.find(veg => veg.id === currentVeg.id) == 'undefined'){
+      return true
+    }
+    return false
+  }
 
   render(){
     const {currentVeg} = this.props
-    
     return Object.keys(currentVeg).length == 0 ? (
       <Fragment>
         <img className="icon" src="/images/information.png" alt=""/>
@@ -35,15 +46,15 @@ class Info extends React.Component{
           <br/>
           <h4>Plant spacing</h4>
           <p>{currentVeg.spaceplants}</p>
-          <button className='button' onClick={this.addToGarden}>
+          {this.showAddVegBtn() && <button className='button' onClick={this.addToGarden}>
             Add to garden
-          </button>
+          </button>}
         </div>
       </Fragment>
   }
 }
-function mapStateToProps({user, currentVeg}){
-  return {user, currentVeg}
+function mapStateToProps({user, currentVeg, userVeges}){
+  return {user, currentVeg, userVeges}
 }
 
 export default connect(mapStateToProps)(Info)

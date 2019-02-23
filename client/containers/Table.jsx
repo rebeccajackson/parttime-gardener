@@ -10,16 +10,17 @@ import MyGarden from '../containers/MyGarden'
 
 import { getMonths } from '../api/months'
 import { getMonthVeges } from '../api/months'
-// import { getPlantingMonthsArr } from '../api/months'
-// import {addToGarden} from '../api/users'
+// import { getPlantingMonthsArr } from '../'
+ import {displayViewVeg} from '../actions/index'
 
 class Table extends React.Component{
   constructor(props){
     super(props)
     this.state = {
       veg: {},
-      setVeg: {},
       monthsArr: [],
+      vegClick: false,
+      monthClick: false,
     }
   }
 
@@ -28,9 +29,22 @@ class Table extends React.Component{
     dispatch(getMonths())
   }
 
-  handleClick = (month) => {
+  handleVegClick = (veg) =>{
+    const { dispatch } = this.props
+    dispatch(displayViewVeg(veg))
+    this.setState({
+      monthClick: false,
+      vegClick: true
+    })
+  }
+
+  handleMonthClick = (month) => {
     const { dispatch } = this.props
     dispatch(getMonthVeges(month))
+    this.setState({
+      monthClick: true,
+      vegClick: false
+    })
   }
 
   // mapToArr = (res)=>{
@@ -51,7 +65,7 @@ class Table extends React.Component{
               <div className='header-grid'>
                 <div className='grid12'>
                   {months.map((month, i) => 
-                    <button onClick={this.handleClick.bind(this, month)} 
+                    <button onClick={this.handleMonthClick.bind(this, month)} 
                         className='month-letter overlay heartbeat' key={i}
                         >
                       
@@ -74,9 +88,9 @@ class Table extends React.Component{
             </div>
           </div>
            <div className='contents'>
-            <MyGarden />
-           {this.props.month && <ViewMonth />
-              || this.props.veg && <ViewVeg />
+            <MyGarden handleVegClick={this.handleVegClick}/>
+           {this.state.monthClick && <ViewMonth />
+              || this.state.vegClick && <ViewVeg />
               }
           </div>
         </Fragment>
