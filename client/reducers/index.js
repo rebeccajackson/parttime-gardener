@@ -4,6 +4,7 @@ import { combineReducers } from 'redux';
 import user from './users'
 import {months} from './months'
 import {monthVeges} from './months'
+import {plantingMonths} from './months'
 import {month} from './months'
 import {userVeges} from './veges'
 import {currentVeg} from './veges'
@@ -15,7 +16,7 @@ const rootReducer = combineReducers({
   month,
   userVeges,
   currentVeg,
-  showAddVegBtn
+  plantingMonths
 });
 
 export default rootReducer;

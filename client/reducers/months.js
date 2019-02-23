@@ -32,3 +32,13 @@ export function month(state = initialState, action){
   }
 }
 
+export function plantingMonths(state = initialState, action){
+  switch (action.type){
+    case 'LOAD_PLANTING_MONTHS':
+      return action.plantingMonths
+    
+    default:
+      return state
+  }
+}
+

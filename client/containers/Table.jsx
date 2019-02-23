@@ -3,24 +3,22 @@ import {HashRouter as Router} from 'react-router-dom'
 import { connect } from 'react-redux'
 
 
-// import PlantingMonth from './PlantingMonth';
+import PlantingMonth from '../components/PlantingMonth';
 import ViewMonth from '../containers/ViewMonth'
 import ViewVeg from '../containers/ViewVeg'
 import MyGarden from '../containers/MyGarden'
 
 import { getMonths } from '../api/months'
 import { getMonthVeges } from '../api/months'
-// import { getPlantingMonthsArr } from '../'
- import {displayViewVeg} from '../actions/index'
+import {displayViewVeg} from '../actions/index'
+import {getPlantingMonthsArr} from '../api/months'
 
 class Table extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      veg: {},
-      monthsArr: [],
       vegClick: false,
-      monthClick: false,
+      monthClick: false
     }
   }
 
@@ -36,6 +34,7 @@ class Table extends React.Component{
       monthClick: false,
       vegClick: true
     })
+    dispatch(getPlantingMonthsArr(veg))
   }
 
   handleMonthClick = (month) => {
@@ -47,17 +46,8 @@ class Table extends React.Component{
     })
   }
 
-  // mapToArr = (res)=>{
-  //   let monthsArr = []
-  //   for(var i=1; i<13; i++){
-  //     if(res.find(month => month.id === i)) monthsArr.push({show: true})
-  //     else monthsArr.push({show: false}) 
-  //   }
-  //   return this.setState({monthsArr: monthsArr})
-  // }
-
   render(){
-    const { months } = this.props
+    const { months, plantingMonths } = this.props
     return(
       <Router>
           <Fragment>
@@ -79,11 +69,11 @@ class Table extends React.Component{
     
               <div className='plantingMonths'> 
                 <div className='grid12'>
-                  {/* {this.state.monthsArr.map((month, i) => 
+                  {plantingMonths.map((month, i) => 
                     <div key={i} className={`${month.name} plantingMonths-header`}>
                       <PlantingMonth show={month.show}/>
                     </div>
-                  )} */}
+                  )}
               </div> 
             </div>
           </div>
@@ -99,8 +89,8 @@ class Table extends React.Component{
   }
 }
 
-function mapStateToProps({ user, months, month }) {
-  return { user, months, month }
+function mapStateToProps({ months, plantingMonths }) {
+  return { months, plantingMonths }
 }
 
 export default connect(mapStateToProps)(Table)

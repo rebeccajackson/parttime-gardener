@@ -26,15 +26,3 @@ router.post('/veg/:vegName', (req,res) => {
 })
 
 module.exports = router
-
-// db.getUserIdByName(username)
-// .then(user => {
-//   res.locals.userId = user.id
-//   token.issue(req,res)
-// })
-// .catch(e =>
-//   res.status(500).json({
-//     ok: false,
-//     message: 'An error ocurred while retrieving your user profile.'
-//   })
-// )

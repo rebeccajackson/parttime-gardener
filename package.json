@@ -8,8 +8,8 @@
   "license": "ISC",
   "scripts": {
     "client": "webpack-dev-server --hot --inline",
-    "dev": "node server",
-    "server": "nodemon server",
+    "dev": "nodemon server --watch",
+    "server": "node server",
     "start": "nodemon server",
     "test": "jest --watchAll",
     "postinstall": "webpack",

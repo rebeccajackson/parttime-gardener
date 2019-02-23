@@ -21,6 +21,13 @@ export function loadMonthVeges(monthVeges) {
   };
 }
 
+export function loadPlantingMonths(plantingMonths) {
+  return {
+    type: 'LOAD_PLANTING_MONTHS',
+    plantingMonths
+  };
+}
+
 export const showError = (errorMessage) => {
   return {
     type: 'SHOW_ERROR',

@@ -6,7 +6,6 @@ import SeasonInfo from '../components/SeasonInfo'
 import Info from './Info'
 
 import {setVeg} from '../actions/index'
-import {getPlantingMonthsArr} from '../api/vegs'
  
 class ViewMonth extends React.Component {
 
@@ -52,8 +51,8 @@ class ViewMonth extends React.Component {
   }
 }
 
-function mapStateToProps({ monthVeges, month, currentVeg, userVeges }) {
-  return { monthVeges, month, currentVeg, userVeges }
+function mapStateToProps({ monthVeges, month }) {
+  return { monthVeges, month }
 }
 
 export default connect(mapStateToProps)(ViewMonth)
