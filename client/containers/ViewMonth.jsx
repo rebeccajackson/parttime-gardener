@@ -6,12 +6,14 @@ import SeasonInfo from '../components/SeasonInfo'
 import Info from './Info'
 
 import {setVeg} from '../actions/index'
+import {getPlantingMonthsArr} from '../api/months'
  
 class ViewMonth extends React.Component {
 
   handleClick = (veg)=>{
    const {dispatch} = this.props
    dispatch(setVeg(veg))
+   dispatch(getPlantingMonthsArr(veg))
   }
 
   render(){
