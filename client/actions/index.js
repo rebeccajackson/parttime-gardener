@@ -1,12 +1,5 @@
 //actions - index.js
 
-export function receiveLogin(user) {
-  return {
-    type: 'LOGIN_SUCCESS',
-    user
-  };
-}
-
 export function loadMonths(months) {
   return {
     type: 'LOAD_MONTHS',
@@ -28,17 +21,17 @@ export function loadPlantingMonths(plantingMonths) {
   };
 }
 
-export const showError = (errorMessage) => {
-  return {
-    type: 'SHOW_ERROR',
-    errorMessage: errorMessage
-  }
-}
-
 export const loadMonth = (month) => {
   return {
     type: 'LOAD_MONTH',
     month
+  }
+}
+
+export const showError = (errorMessage) => {
+  return {
+    type: 'SHOW_ERROR',
+    errorMessage: errorMessage
   }
 }
 

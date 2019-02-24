@@ -1,28 +1,12 @@
 const connection = require('./connection')
-const {generateHash} = require('../auth/hash')
 
 module.exports = {
-  createUser,
   getVeges,
   getMonths,
   getMonthVeges,
-  getUserIdByName,
   getUserVeges,
   getPlantingMonthsArr,
   addToGarden
-}
-
-function createUser ({username, password}, db = connection) {
-  return generateHash(password)
-  .then(hash =>{
-    return db('users').insert({username, hash})
-  })
-}
-
-function getUserIdByName(username, db = connection){
-  return db('users')
-  .where('users.username', username)
-  .select().first()
 }
 
 function getVeges(db = connection){
@@ -40,11 +24,19 @@ function getMonthVeges(monthId, db = connection){
   .select().orderBy('name')
 }
  
-function getUserVeges(id, db = connection){
-  return db('veg')
-  .join('garden', 'garden.veg_id', 'veg.id')
-  .where('garden.user_id', id)
-  .select().orderBy('name')
+function getUserVeges(username, db = connection){
+  return db('users')
+  .where('username', username)
+  .select('users.id').first().then(res => {
+    return db('veg')
+    .join('garden', 'garden.veg_id', 'veg.id')
+    .where('garden.user_id', res.id)
+    .select().orderBy('name')
+  })
+  .catch(err => {
+    console.log(err)
+  }) 
+ 
 }
 
 function getPlantingMonthsArr(veg, db = connection){
@@ -55,13 +47,18 @@ function getPlantingMonthsArr(veg, db = connection){
 }
 
 function addToGarden(veg, user, db = connection){
-  return db('garden')
-  .where('user_id', user.id)
-  .where('veg_id', veg.id).then((rows)=>{
-    if (rows.length===0) {
-      return db('garden').insert({veg_id: veg.id, user_id: user.id})
-    }
-  }).catch(err => {
-    console.log(err)
+  return db('users')
+  .where('username', user.username)
+  .select('users.id').first().then(user => {
+    return db('garden')
+    .where('user_id', user.id)
+    .where('veg_id', veg.id).then((rows)=>{
+      if (rows.length===0) {
+        return db('garden').insert({veg_id: veg.id, user_id: user.id})
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
   })
 }

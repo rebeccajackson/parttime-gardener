@@ -11,7 +11,7 @@ class Info extends React.Component{
   }
 
   addToGarden = () => {
-    const payload = {user: this.props.user, veg: this.props.currentVeg}
+    const payload = {user: this.props.auth.user, veg: this.props.currentVeg}
     const {dispatch} = this.props
     dispatch(addToGarden(payload))
   }
@@ -53,8 +53,8 @@ class Info extends React.Component{
       </Fragment>
   }
 }
-function mapStateToProps({user, currentVeg, userVeges}){
-  return {user, currentVeg, userVeges}
+function mapStateToProps({auth, currentVeg, userVeges}){
+  return {auth, currentVeg, userVeges}
 }
 
 export default connect(mapStateToProps)(Info)

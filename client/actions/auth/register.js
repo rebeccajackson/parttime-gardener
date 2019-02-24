@@ -1,20 +1,22 @@
 import request from 'superagent'
 
-import {showError} from '../../actions/index'
-import { receiveLogin } from '../../actions/index';
-import { saveUserToken } from './authUtilities/auth'
+import {loginError, receiveLogin} from '../auth/login'
+import { saveUserToken } from '../../authUtilities/auth'
 
 export function registerUser(creds){
-  return (dispatch) => {
+  console.log('registering', creds)
+  return dispatch => {
     return request.post(`/api/register`, creds)
     .then(res => {
       const userInfo = saveUserToken(res.body.token);
-      userInfo.name = creds.username
+      userInfo.name = creds.first_name
       userInfo.isAuthenticated = true
-      dispatch(receiveLogin(userInfo));  
+      console.log('register result', userInfo)
+      dispatch(receiveLogin(userInfo)); 
+      document.location = "/#/"
     })
     .catch(err => {
-      dispatch(showError(err.message))
+      dispatch(loginError(err.response.body.message))
     })
   }
 }

@@ -12,8 +12,9 @@ router.get('/', (req,res)=>{
 })
 
 router.post('/veg', (req,res)=> {
-  db.getUserVeges(req.body.id)
+  db.getUserVeges(req.body.username)
   .then(veges =>{
+    console.log(veges)
     res.json(veges)
   })
 })
