@@ -10,7 +10,7 @@
     "client": "webpack-dev-server --hot --inline",
     "dev": "nodemon server --watch",
     "server": "node server",
-    "start": "nodemon server",
+    "start": "node server",
     "test": "jest --watchAll",
     "postinstall": "webpack",
     "win": "webpack --watch"
