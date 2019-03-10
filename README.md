@@ -1,28 +1,22 @@
-# A starter webpack project for React
+# Part-time Gardener web app
 
-This is a starter project that uses webpack to transpile and bundle ES6 React code. To use, consider these steps:
+Part-time gardener is designed to enable a user to see what vegetables to plant in each season/month.
+A user can also register/login to then save vegetables to their garden
 
-* Fork this repo
-* Rename your repo according to the app you're building
+## This project was built using
 
-```sh
-git clone https://github.com/[your-account]/[your-app].git
-cd [your-app] && yarn
-```
+* Javascript
+* React-redux
+* SQLite3
 
-To start the development server with a watcher that rebuilds your code, run `yarn dev`. The assets built by webpack are placed in `server/public`. This folder is defined as a static folder in an Express.js server that can be started with `npm run server`.
+## TODO
+- [ ] Add weather-API to show average conditions in each month
+- [ ] Push latest changes to Heroku
+- [ ] Delete button to remove a veg from your garden
+- [ ] Touch up overall style of the page
+- [ ] Click/hover animations
+- [ ] Edit veg information form
+- [ ] Add new veg form
+- [ ] More tests
 
-Additional components should be placed in `client/components`.
-
-## Separate client/server
-
-The boilerplate is also set up to host the client using `webpack-dev-server` with hot module reloading etc. To use this method, in one terminal run:
-```sh
-yarn client
-```
-and in the other:
-```sh
-yarn server
-```
-The client will be available on http://localhost:8080 and the server on http://localhost:3000. Note that you will still need to manage CORS between the two, as they are on different ports.
 
