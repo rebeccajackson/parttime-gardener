@@ -30,7 +30,7 @@ export function loginError (message) {
 
 export function loginUser(creds){
   return (dispatch) => {
-    dispatch(requestLogin(creds))
+    dispatch(requestLogin())
     return request.post(`/api/login`, creds)
     .then(res => {
       const userInfo = saveUserToken(res.body.token)
