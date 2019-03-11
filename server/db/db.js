@@ -9,22 +9,26 @@ module.exports = {
   addToGarden
 }
 
-function getVeges(db = connection){
+function getVeges(testDb){
+  const db = testDb || connection
   return db('veg').select().orderBy('name')
 }
 
-function getMonths(db = connection){
+function getMonths(testDb){
+  const db = testDb || connection
   return db('months').select()
 }
 
-function getMonthVeges(monthId, db = connection){
+function getMonthVeges(monthId, testDb){
+  const db = testDb || connection
   return db('veg_months')
   .where('veg_months.month_id', monthId)
   .join('veg', 'veg.id', 'veg_months.veg_id')
   .select().orderBy('name')
 }
  
-function getUserVeges(username, db = connection){
+function getUserVeges(username, testDb){
+  const db = testDb || connection
   return db('users')
   .where('username', username)
   .select('users.id').first().then(res => {
@@ -39,14 +43,16 @@ function getUserVeges(username, db = connection){
  
 }
 
-function getPlantingMonthsArr(veg, db = connection){
+function getPlantingMonthsArr(veg, testDb){
+  const db = testDb || connection
   return db('veg_months')
   .where('veg_months.veg_id', veg.id)
   .join('months', 'months.id', 'veg_months.month_id')
   .select('veg_months.month_id as id')
 }
 
-function addToGarden(veg, user, db = connection){
+function addToGarden(veg, user, testDb){
+  const db = testDb || connection
   return db('users')
   .where('username', user.username)
   .select('users.id').first().then(user => {
