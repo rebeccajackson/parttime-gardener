@@ -68,8 +68,11 @@ exports.seed = function(knex, Promise) {
         {veg_id: 13, month_id: 12},
         {veg_id: 13, month_id: 1},
         {veg_id: 14, month_id: 1},
-        {veg_id: 14, month_id: 1},
-        {veg_id: 14, month_id: 1},
+        {veg_id: 14, month_id: 2},
+        {veg_id: 14, month_id: 9},
+        {veg_id: 14, month_id: 10},
+        {veg_id: 14, month_id: 11},
+        {veg_id: 14, month_id: 12},
       ]);
     });
 };
