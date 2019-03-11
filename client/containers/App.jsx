@@ -2,7 +2,6 @@ import React, { Fragment } from 'react'
 import { HashRouter as Router, Route} from 'react-router-dom'
 import { connect } from 'react-redux'
 
-
 import Table from './Table'
 import Register from './Register';
 import Login from './Login';
@@ -14,20 +13,19 @@ export function App({ auth }) {
     <Router>
       <Fragment>
         <div id="home">
-        <Nav />
-       
-          {!auth.isAuthenticated ?
+          <Nav />
+          {auth.isAuthenticated ?
+            <Table />
+            :
             <div className="home-page">
               <Route path="/login" component={Login} />}
               <Route path="/register" component={Register} />
             </div>
-          : <Table />
           }        
         </div>
       </Fragment>
     </Router>
   )
-  
 }
 
 function mapStateToProps({ auth }) {
