@@ -18,4 +18,11 @@ router.post('/veg', (req,res)=> {
   })
 })
 
+router.post('/veg/:vegName', (req,res) => {
+  db.getPlantingMonthsArr(req.body)
+  .then(months =>{
+    res.json(months)
+  })
+})
+
 module.exports = router
