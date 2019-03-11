@@ -11,7 +11,7 @@ import MyGarden from '../containers/MyGarden'
 import { getMonths } from '../api/months'
 import { getMonthVeges } from '../api/months'
 import {displayViewVeg} from '../actions/index'
-import {getPlantingMonthsArr} from '../api/months'
+import {getPlantingMonthsArr} from '../api/vegs'
 
 class Table extends React.Component{
   constructor(props){

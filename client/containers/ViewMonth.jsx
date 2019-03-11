@@ -6,7 +6,7 @@ import SeasonInfo from '../components/SeasonInfo'
 import Info from './Info'
 
 import {setVeg} from '../actions/index'
-import {getPlantingMonthsArr} from '../api/months'
+import {getPlantingMonthsArr} from '../api/vegs'
  
 class ViewMonth extends React.Component {
 
