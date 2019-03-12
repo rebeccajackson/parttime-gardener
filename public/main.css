@@ -7,15 +7,19 @@
 
   /* Layout */
 
-body{
+#app{
   font-family: 'Montserrat', sans-serif;
   background-image: url('/images/nathan-dumlao-505059-unsplash.jpg');
   background-size: cover;
-  z-index: -1;
-
+  z-index: -3;
+  display: grid;
+  grid-template: 'nav main' 100vh
+  /10% 90%
 }
 
 #home{
+  grid-area: main;
+  z-index: 3;
   display: grid;
   grid-template: '. table .' auto
     '. plantingMonths .' auto
@@ -24,6 +28,13 @@ body{
   color: rgb(32, 32, 32);
   margin: 2em;
   justify-content: center;
+}
+
+.navbar{
+  grid-area: nav;
+  background-color: #000000b4;
+  z-index: 3;
+  padding: 5px;
 }
 
 .home-page{
@@ -40,11 +51,10 @@ body{
   grid-area: contents;
   display: grid;
   width: 100%;
-  grid-template: '. my-garden . view-container .'80%
-  /5% 25% 5% 60% 5%;
+  grid-template: 'my-garden . view-container'80%
+  /25% 5% 70%;
   color: rgb(32, 32, 32);
-  grid-gap: 10px;
-  margin: 2em;
+  margin: 2em 0;
   justify-content: center;
 }
 
@@ -56,9 +66,10 @@ body{
   grid-template: 'h3' 70px
     'garden-list' 100%
     /100%;
+      -webkit-box-shadow: 0px 2px 15px -3px rgba(0,0,0,0.78);
+  -moz-box-shadow: 0px 2px 15px -3px rgba(0,0,0,0.78);
+  box-shadow: 0px 2px 15px -3px rgba(0,0,0,0.78);
 }
-
-
 
 .view-container{
   grid-area: view-container;
@@ -68,6 +79,9 @@ body{
   'box1 box2 box3' 100%
   /2fr 2fr 2fr;
   justify-self: center;
+  -webkit-box-shadow: 0px 2px 15px -3px rgba(0,0,0,0.78);
+  -moz-box-shadow: 0px 2px 15px -3px rgba(0,0,0,0.78);
+  box-shadow: 0px 2px 15px -3px rgba(0,0,0,0.78);
 }
 
 .month-container{
@@ -78,6 +92,24 @@ body{
   'box1 box3' 100%
   /2fr 2fr;
   justify-self: center;
+  -webkit-box-shadow: 0px 2px 15px -3px rgba(0,0,0,0.78);
+  -moz-box-shadow: 0px 2px 15px -3px rgba(0,0,0,0.78);
+  box-shadow: 0px 2px 15px -3px rgba(0,0,0,0.78);
+}
+
+.background-overlay{
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color:rgba(255, 255, 255, 0.8);
+  opacity: 0.5;
+  filter:blur(4px);
+  -o-filter:blur(4px);
+  -ms-filter:blur(4px);
+  -moz-filter:blur(4px);
+  -webkit-filter:blur(4px);
 }
 
 .table{
@@ -90,7 +122,7 @@ body{
 
 .box1{
   grid-area: box1;
-  border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 3px;
 }
 
 .box2{
@@ -99,7 +131,7 @@ body{
 
 .box3{
   grid-area: box3;
-  border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 3px;
 }
 
 .month-box{
@@ -107,7 +139,7 @@ body{
   flex-direction: column;
   align-items: center;
   background-color: white;
-  border: 1px solid rgb(99, 99, 99);
+  border: 0.5px solid rgba(0, 0, 0, 0.472);
   padding: 1em;
 
 }
@@ -132,10 +164,10 @@ body{
   text-align: center;
   height: 100%;
   line-height: 70px;
-  font-size: 2em;
+  font-size: 1.5em;
   background-color: rgba(255, 255, 255, 0.781);
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
 }
 
 .month-letter{
@@ -147,31 +179,29 @@ body{
 }
 
 .table-header{
-  border: 1px solid black;
+  border: 0.5px solid rgba(0, 0, 0, 0.472);
   text-align: center;
   line-height: 50px;
   height: 100%;
 }
 
 .plantingMonths-header{
-  border: 1px solid black;
+  border: 0.5px solid rgba(0, 0, 0, 0.472);
   text-align: center;
   line-height: 50px;
   height: 100%;
-  /* background-color: rgba(255, 255, 255, 0.781); */
-
 }
 
 .garden-list{
   background-color: white;
-  border: 1px solid rgb(99, 99, 99);
+  border: 0.5px solid rgba(0, 0, 0, 0.472);
   display: flex;
   flex-direction: column;
-  align-items: space-evenly;
-  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
   padding: 1em;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .veg-body{
@@ -195,13 +225,20 @@ body{
 .vegNameList{
   text-decoration: none;
   color: black;
+  transition: all .2s ease-in-out;
 }
 .vegNameList:hover{
-  color: #187e38c0;
-  font-size: 1.5em;
+  font-size: 1.2em;
+  transform: scale(1.1); 
 }
 
-.form-label{
+.info-box h4{
+  text-align: left;
+}
+
+/* TODO use styling below for forms */
+
+/* .form-label{
   font-size: 1.5em;
   color: white;
 }
@@ -210,24 +247,20 @@ body{
   box-sizing: border-box;
   border-radius: 5px;
   padding: 12px;
-  border: 1px solid #C2C2C2;
+  border: 0.5px solid rgba(0, 0, 0, 0.472);
   box-shadow: 1px 2px rgb(131, 131, 131);
-}
+} */
 
-/* Images */
+/* Icons */
 .icon{
-  width: 3em;
-  height: 3em;
+  width: 2em;
+  height: 2em;
+  margin-bottom: 5px;
 }
 
 /* Colors */
-
 .summer{
   background-color: rgba(175, 59, 59, 0.856);
-  cursor: pointer;
-  outline: none;
-  box-shadow: 1px 2px rgb(131, 131, 131);
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .autumn{
@@ -252,49 +285,40 @@ body{
 /* Animations */
 .button{
   margin: 5px;
-  font-size: 1.2em;
+  font-size: 1.1em;
   color: white;
-  border-radius: 5px;
+  border-radius: 3px;
   background-color: #187e38da;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  padding: 10px 20px;
+  padding: 7px 10px;
   text-align: center;
   cursor: pointer;
   outline: none;
   border: none;
-  box-shadow: 0 2px #999;
+    -webkit-box-shadow: 0px 1px 10px -3px rgba(0,0,0,0.78);
+  -moz-box-shadow: 0px 1px 10px -3px rgba(0,0,0,0.78);
+  box-shadow: 0px 1px 10px -3px rgba(0,0,0,0.78);
 }
 
-.button:hover {background-color: #14642dda;}
+.button:hover {
+  background-color: #156b31da;
+}
 
 .button:active {
-  background-color: #14642dda;
-  box-shadow: 0 2px #666;
-  transform: translateY(2px);
-}
-
-
-.heartbeat {
-  cursor: pointer;
-  outline: none;
-  box-shadow: 1px 2px rgb(131, 131, 131);
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-}
-
-.heartbeat:hover {background-color: #00000086;}
-
-
-.heartbeat:active {
-  background-color: #14642dda;
-  box-shadow: 0 2px #666;
-  transform: translateY(1px);
+  -webkit-animation: pulsate-bck 0.5s ease-in-out both;
+  animation: pulsate-bck 0.5s ease-in-out both;
 }
 
 .overlay {
   position: relative;
+  outline: none;
+  -webkit-box-shadow: 0px 1px 10px -3px rgba(0,0,0,0.78);
+  -moz-box-shadow: 0px 1px 10px -3px rgba(0,0,0,0.78);
+  box-shadow: 0px 1px 10px -3px rgba(0,0,0,0.78);
 }
 
 .overlay:before{
+  cursor: pointer;
+  outline: none;
   position: absolute;
   content:" ";
   top:0;
@@ -304,14 +328,20 @@ body{
   display: none;
   z-index:0;
 }
+
+.overlay:active{
+  -webkit-animation: pulsate-bck 0.5s ease-in-out both;
+  animation: pulsate-bck 0.5s ease-in-out both;
+}
+
 .overlay:hover:before{
   display: block;
   background-color: rgba(5, 5, 5, 0.13);
 }
 
-.scale-in-center {
-	-webkit-animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+h3 {
+	-webkit-animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) none;
+	        animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) none;
 }
 /* ----------------------------------------------
  * Generated by Animista on 2019-2-13 21:37:4
@@ -347,3 +377,43 @@ body{
     opacity: 1;
   }
 }
+
+/* ----------------------------------------------
+ * Generated by Animista on 2019-3-13 8:51:50
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation pulsate-bck
+ * ----------------------------------------
+ */
+ @-webkit-keyframes pulsate-bck {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes pulsate-bck {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
