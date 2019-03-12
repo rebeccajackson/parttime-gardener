@@ -1,7 +1,6 @@
 //reducers - months.js
 const initialState = []
 
-
 export function months(state = initialState, action){
   switch (action.type){
     case 'LOAD_MONTHS':
