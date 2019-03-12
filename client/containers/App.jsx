@@ -12,8 +12,9 @@ export function App({ auth }) {
   return(
     <Router>
       <Fragment>
+        <Nav />
+      <div className='background-overlay'></div>
         <div id="home">
-          <Nav />
           {auth.isAuthenticated ?
             <Table />
             :
