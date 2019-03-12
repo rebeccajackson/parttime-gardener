@@ -1,11 +1,7 @@
 // api months.js
 import request from 'superagent'
 
-import { loadMonths } from '../actions/index'
-import { loadMonth } from '../actions/index'
-import { loadMonthVeges } from '../actions/index'
-import { loadPlantingMonths } from '../actions/index'
-import { showError } from '../actions/index'
+import { loadMonths, loadMonth, loadMonthVeges, viewClickedContainer, showError } from '../actions/index'
 
 
 export function getMonths(){
