@@ -30,8 +30,8 @@ class Info extends React.Component{
       <Fragment>
         <img className="icon" src="/images/information.png" alt=""/>
         <div className='info-box'>
-        <br/>
-        <h3>Click on a veg</h3>
+          <br/>
+          <h3>Click on a veg</h3>
         </div>
       </Fragment>
     ) :
@@ -46,9 +46,10 @@ class Info extends React.Component{
           <br/>
           <h4>Plant spacing</h4>
           <p>{currentVeg.spaceplants}</p>
-          {this.showAddVegBtn() && <button className='button' onClick={this.addToGarden}>
-            Add to garden
-          </button>}
+          {this.showAddVegBtn() && 
+            <button className='button' onClick={this.addToGarden}>
+              <p>Add to garden</p>
+            </button>}
         </div>
       </Fragment>
   }

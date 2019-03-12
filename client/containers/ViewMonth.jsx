@@ -20,9 +20,9 @@ class ViewMonth extends React.Component {
     const { month, monthVeges} = this.props
     return(
         <div className="view-container">
-          <h3 className="month-name scale-in-center box-title">
-            {month.name}
-          </h3>
+          <div className="month-name box-title">
+            <h3>{month.name}</h3>
+          </div>
   
           <div className="month-box box1 ">
              <SeasonInfo month={month} /> 

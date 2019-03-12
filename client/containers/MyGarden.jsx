@@ -16,16 +16,18 @@ class MyGarden extends React.Component{
     return(
       <Router >
         <div className="my-garden">
-          <h3 className="box-title">My garden</h3>
-            <div className="garden-list">
-              {userVeges.map((obj, i) => 
-              <Link className='vegNameList' key={i} 
-                onClick={this.props.handleVegClick.bind(this, obj)}
-                to={ `/veg/${obj.name}`}>
-                {obj.name}
-              </Link>
-              )}
-            </div>
+          <div className="box-title">
+            <h3>My Garden</h3>
+          </div>
+          <div className="garden-list">
+            {userVeges.map((obj, i) => 
+            <Link className='vegNameList' key={i} 
+              onClick={this.props.handleVegClick.bind(this, obj)}
+              to={ `/veg/${obj.name}`}>
+              {obj.name}
+            </Link>
+            )}
+          </div>
         </div>
       </Router>
     )
