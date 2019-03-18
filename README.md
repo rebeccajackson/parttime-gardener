@@ -13,10 +13,10 @@ A user can also register/login to then save vegetables to their garden
 - [ ] Add weather-API to show average conditions in each month
 - [ ] Push latest changes to Heroku
 - [ ] Delete button to remove a veg from your garden
-- [ ] Touch up overall style of the page
-- [ ] Click/hover animations
+- [x] Touch up overall style of the page
+- [x] Click/hover animations
 - [ ] Edit veg information form
 - [ ] Add new veg form
-- [ ] More tests
+- [x] Test DB and routes
 
 
