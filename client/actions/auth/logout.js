@@ -1,8 +1,11 @@
 import { removeUser } from '../../authUtilities/auth'
 
+export const LOGOUT_REQUEST = 'LOGOUT_REQUEST'
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
+
 function requestLogout () {
   return {
-    type: 'LOGOUT_REQUEST',
+    type: LOGOUT_REQUEST,
     isFetching: true,
     isAuthenticated: true
   }
@@ -10,7 +13,7 @@ function requestLogout () {
 
 function receiveLogout () {
   return {
-    type: 'LOGOUT_SUCCESS',
+    type: LOGOUT_SUCCESS,
     isFetching: false,
     isAuthenticated: false
   }

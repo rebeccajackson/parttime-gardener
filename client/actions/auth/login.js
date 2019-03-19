@@ -2,9 +2,13 @@ import request from 'superagent'
 
 import { saveUserToken } from '../../authUtilities/auth'
 
+export const LOGIN_REQUEST = 'LOGIN_REQUEST'
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+export const LOGIN_FAILURE = 'LOGIN_FAILURE'
+
 function requestLogin () {
   return {
-    type: 'LOGIN_REQUEST',
+    type: LOGIN_REQUEST,
     isFetching: true,
     isAuthenticated: false
   }
@@ -12,7 +16,7 @@ function requestLogin () {
 
 export function receiveLogin (user) {
   return {
-    type: 'LOGIN_SUCCESS',
+    type: LOGIN_SUCCESS,
     isFetching: false,
     isAuthenticated: true,
     user
@@ -21,7 +25,7 @@ export function receiveLogin (user) {
 
 export function loginError (message) {
   return {
-    type: 'LOGIN_FAILURE',
+    type: LOGIN_FAILURE,
     isFetching: false,
     isAuthenticated: false,
     message

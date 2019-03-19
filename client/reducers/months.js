@@ -1,9 +1,11 @@
 //reducers - months.js
+import { LOAD_MONTH, LOAD_MONTHS, LOAD_MONTH_VEGES, LOAD_PLANTING_MONTHS } from '../actions'
+
 const initialState = []
 
 export function months(state = initialState, action){
   switch (action.type){
-    case 'LOAD_MONTHS':
+    case LOAD_MONTHS:
       return action.months
     
     default:
@@ -13,7 +15,7 @@ export function months(state = initialState, action){
 
 export function monthVeges(state = initialState, action){
   switch (action.type){
-    case 'LOAD_MONTH_VEGES':
+    case LOAD_MONTH_VEGES:
       return action.monthVeges
     
     default:
@@ -23,7 +25,7 @@ export function monthVeges(state = initialState, action){
 
 export function month(state = initialState, action){
   switch (action.type){
-    case 'LOAD_MONTH':
+    case LOAD_MONTH:
       return action.month
     
     default:
@@ -33,7 +35,7 @@ export function month(state = initialState, action){
 
 export function plantingMonths(state = initialState, action){
   switch (action.type){
-    case 'LOAD_PLANTING_MONTHS':
+    case LOAD_PLANTING_MONTHS:
       return action.plantingMonths
     
     default:
