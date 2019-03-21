@@ -43,7 +43,8 @@ export function loginUser(creds){
       document.location = "/#/" 
     })
     .catch(err => {
-      dispatch(loginError(err.response.body.message))
+      console.log(err)
+      // dispatch(loginError(err.response.body.message))
     })
   }
 }
