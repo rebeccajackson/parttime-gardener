@@ -41,9 +41,9 @@ test('POST /veg loads array of vege objects by username', () => {
   const veg = {name: 'tomato'}
 
   const expectedMonths = [
-    0: {id: 1, name: 'January', season: 'summer'},
-    1: {id: 2, name: 'Febuary', season: 'summer'},
-    2: {id: 3, name: 'March', season: 'autumn'}
+    {id: 1, name: 'January', season: 'summer'},
+    {id: 2, name: 'Febuary', season: 'summer'},
+    {id: 3, name: 'March', season: 'autumn'}
   ]
 
 
