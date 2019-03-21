@@ -1,9 +1,16 @@
-# Part-time Gardener web app
+# Parttime Gardener web app
 
-Part-time gardener is designed to enable a user to see what vegetables to plant in each season/month.
+This is one of my personal projects that is still a work in progress.  I use it as a platform to grow my skills and practice what I have learnt. 
+Parttime gardener is designed to enable a user to see what vegetables to plant in each season/month.
 A user can also register/login to then save vegetables to their garden
 
-## This Node.js project was built using
+## Build process
+- Initial build used Handlebars
+- Learnt React and rebuilt from scratch
+- After learning Redux I made a new branch, implimented the changes then merged it back to master
+- I used this project to learn JWT web token login and register
+
+## This current version of my project is built with
 
 * Javascript
 * React-redux
