@@ -1,5 +1,5 @@
 //reducers - veges.js
-import { LOAD_USER_VEGES, SET_VEG, DISPLAY_VIEW_VEG } from '../actions'
+import { LOAD_USER_VEGES, SET_VEG, DISPLAY_VIEW_VEG } from '../actions/index'
 
 const initialState = []
 
